@@ -1,2 +1,34 @@
-<h1>Admin::Applications#index</h1>
-<p>Find me in app/views/admin/applications/index.html.erb</p>
+<h1 class="page-header">New Application</h1>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1,001</td>
+                    <td>Lorem</td>
+                    <td>ipsum</td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                    <td><%= link_to  "View details", admin_application_path(1) %></td>
+                  </tr>
+                  <tr>
+                    <td>1,002</td>
+                    <td>amet</td>
+                    <td>consectetur</td>
+                    <td>adipiscing</td>
+                    <td>elit</td>
+                    <td><%= link_to  "View details", admin_application_path(1) %></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>

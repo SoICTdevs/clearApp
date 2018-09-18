@@ -8,9 +8,46 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+    <div class="row">
+      <div class="col-md-4">
+        <div class="urlogo">
+            <%= image_tag  "urlogo.JPG" %>
+          </div>
+      </div>
+      <div class="col-md-8">
+      <div class="content">
+      <ul class="nav navbar-nav navbar-right">
+       <%= link_to  "Logout" , class:'clear-both'%>
+      </ul>
+        <h3>Welcome to SoICT clearance application</h3>
+      </div>
+      </div>
+    </div>
   <body>
-  <button type="submit" class="btn btn-primary">Hello Users</button>
-    <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <ul class="nav nav-sidebar">
+              <br>
+              <br>
+              <%= link_to  "New application (3)", admin_applications_path, class:'btn btn-success' %>
+              <br>
+              <br>
+              <%= link_to  "Approved application (1)", admin_applications_path, class:'btn btn-success' %>
+              <br>
+              <br>
+              <%= link_to  "Rejected application (13)", admin_applications_path, class:'btn btn-success' %>
+              <br>
+              <br>              
+            </ul>
+          </div>
+          <div class="col-sm-9">
+            
+            <%= yield %>
+            
+          </div>
+        </div>
+    </div>
+    
   </body>
 </html>

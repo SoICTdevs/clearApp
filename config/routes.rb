@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'applications/destroy'
   end
   namespace :admin do
-    get 'sessions/new'
+    get 'login' => 'sessions#new', :as => 'login'
     get 'sessions/create'
     get 'sessions/destroy'
   end

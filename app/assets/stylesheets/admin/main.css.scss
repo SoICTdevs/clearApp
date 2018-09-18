@@ -2,3 +2,45 @@
 body{
     background: $color;
 }
+.row ul{
+    padding-right: 5%;
+}
+.urlogo{
+    padding: 20% 0 0 5%;
+}
+.content{
+    padding-top: 15%;
+}
+.btn{
+    border: 0ch;
+    border-radius: 0;
+}
+.form-control{
+    padding: 2%;
+
+    border-radius: 0;
+}
+ul .btn{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    font-style: bold;
+    font-size: 18px;
+    background: $btn-board !important;
+    color: $color-button;
+}
+ul .btn:hover{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    background: $color-btnhover !important;
+    color: $color-button;
+}
+ul .btn:active{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    background: $btn-active !important;
+    color: $color-button;
+}
+
