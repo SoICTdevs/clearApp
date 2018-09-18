@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_17_202722) do
+ActiveRecord::Schema.define(version: 2018_09_18_160723) do
+
+  create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "reg_number"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "telephone"
+    t.string "sex"
+    t.string "department"
+    t.integer "level"
+    t.string "academic_year"
+    t.string "sponsor"
+    t.boolean "is_dean_approve"
+    t.boolean "is_hod_approve"
+    t.boolean "is_warden_approve"
+    t.boolean "is_librarian_approve"
+    t.boolean "is_finance_approve"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
@@ -24,11 +44,16 @@ ActiveRecord::Schema.define(version: 2018_09_17_202722) do
     t.string "academic_year"
     t.string "sponsor"
     t.string "password"
-    t.boolean "is_dean_approve"
-    t.boolean "is_hod_approve"
-    t.boolean "is_warden_approve"
-    t.boolean "is_librarian_approve"
-    t.boolean "is_finance_approve"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "role"
+    t.string "password_hash"
+    t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,6 @@
-class CreateStudents < ActiveRecord::Migration[5.2]
+class CreateApplications < ActiveRecord::Migration[5.2]
   def change
-    create_table :students do |t|
+    create_table :applications do |t|
       t.integer :reg_number
       t.string :first_name
       t.string :last_name
@@ -11,7 +11,6 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.integer :level
       t.string :academic_year
       t.string :sponsor
-      t.string :password
       t.boolean :is_dean_approve
       t.boolean :is_hod_approve
       t.boolean :is_warden_approve
