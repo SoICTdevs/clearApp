@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reg_number: 1
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  telephone: MyString
+  sex: MyString
+  department: MyString
+  level: 1
+  academic_year: MyString
+  sponsor: MyString
+  is_dean_approve: false
+  is_hod_approve: false
+  is_warden_approve: false
+  is_librarian_approve: false
+  is_finance_approve: false
+
+two:
+  reg_number: 1
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  telephone: MyString
+  sex: MyString
+  department: MyString
+  level: 1
+  academic_year: MyString
+  sponsor: MyString
+  is_dean_approve: false
+  is_hod_approve: false
+  is_warden_approve: false
+  is_librarian_approve: false
+  is_finance_approve: false

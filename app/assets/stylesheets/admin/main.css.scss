@@ -1,0 +1,72 @@
+@import "partials/variables";
+body{
+    background: $color;
+}
+.row ul{
+    padding-right: 5%;
+}
+.urlogo{
+    padding: 20% 0 0 5%;
+}
+.content{
+    padding-top: 15%;
+}
+.btn{
+    border: 0ch;
+    border-radius: 0;
+}
+.form-control{
+    padding: 2%;
+
+    border-radius: 0;
+}
+ul li a{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    font-style: bold;
+    font-size: 18px;
+    background: $btn-board !important;
+    color: $color-button;
+}
+ul li a:hover{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    background: $color-btnhover !important;
+    color: $color-button;
+}
+ul li a .active{
+    text-decoration: none;
+    width: 150px;
+    height: 100px;
+    background: $btn-active !important;
+    color: $color-button;
+}
+h3{
+    color: $color-title;
+    font-style: bold;
+}
+ul{
+    display: inline;
+}
+ul .logout a{
+    color: $color-logout; 
+    font-size: 12px;
+    font-style: bold;
+    font-variant: bold;
+    background: $color-button !important;
+}
+ul .logout a:hover{
+    color: $color-logout; 
+    font-size: 16px;
+    background: $color-button !important;
+}
+button a{
+    text-decoration: none;
+    color: $color-button;
+}
+button a:hover{
+    text-decoration: none;
+    color: $color-button;
+}
