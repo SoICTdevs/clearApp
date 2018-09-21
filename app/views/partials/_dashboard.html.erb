@@ -1,0 +1,92 @@
+<% if current_user%>
+  <% if current_user.role == 'Dean'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="<%= current_user.role == 'Dean' ? 'active' : '' %>">
+        <%= link_to  "New application (#{Application.count(is_dean_approve = 2)})", admin_applications_path(Application.find_by_is_dean_approve(2)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{Application.count(is_dean_approve = 1)})", admin_applications_path(Application.find_by_is_dean_approve(1)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{Application.count(is_dean_approve = 0)})", admin_applications_path(Application.find_by_is_dean_approve(0)) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+  <% if current_user.role == 'HOD'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="<%= current_user.role == 'HOD' ? 'active' : '' %>">
+        <%= link_to  "New application (#{Application.count('is_hod_approve = null')})", admin_applications_path(Application.find_by_is_hod_approve(0)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{Application.count('is_hod_approve = 1')})", admin_applications_path(Application.find_by_is_hod_approve(1)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{Application.count('is_hod_approve = 0')})", admin_applications_path(Application.find_by_is_hod_approve(nil)) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+  <% if current_user.role == 'Finance'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="<%= current_user.role == 'Finance' ? 'active' : '' %>">
+        <%= link_to  "New application (#{Application.count('is_finance_approve = null')})", admin_applications_path(Application.find_by_is_finance_approve(0)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{Application.count('is_finance_approve = 1')})", admin_applications_path(Application.find_by_is_finance_approve(1)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{Application.count('is_finance_approve = 0')})", admin_applications_path(Application.find_by_is_finance_approve(nil)) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+  <% if current_user.role == 'Waden'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="<%= current_user.role == 'Waden' ? 'active' : '' %>">
+        <%= link_to  "New application (#{Application.count('is_warden_approve = null')})", admin_applications_path(Application.find_by_is_warden_approve(0)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{Application.count('is_warden_approve = 1')})", admin_applications_path(Application.find_by_is_warden_approve(1)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{Application.count('is_warden_approve = 0')})", admin_applications_path(Application.find_by_is_warden_approve(nil)) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+    <% if current_user.role == 'Librarian'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="<%= current_user.role == 'Librarian' ? 'active' : '' %>">
+        <%= link_to  "New application (#{Application.count('is_librarian_approve = null')})", admin_applications_path(Application.find_by_is_librarian_approve(0)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{Application.count('is_librarian_approve = 1')})", admin_applications_path(Application.find_by_is_librarian_approve(1)) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{Application.count('is_librarian_approve = 0')})", admin_applications_path(Application.find_by_is_librarian_approve(nil)) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+<% end %>

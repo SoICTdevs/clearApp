@@ -1,6 +1,6 @@
-<%= form_for [:admin , @application] do |f| %>
+<!--<%= form_for [:admin , @application] do |f| %>
 <% if @application.errors.any? %>
-        <% @applicationt.errors.full_messages.each do |msg|%>
+        <% @application.errors.full_messages.each do |msg|%>
             <div class="alert alert-danger"><%= msg %></div>
         <% end %>
   <% end %>
@@ -26,4 +26,5 @@
     <%= f.label :Reject%>
     <%= f.check_box :is_dean_approve, class:'btn btn-default'%>
 </div>
-<% end %>
+<% end %>-->
+<%= render  "partials/approject" %>

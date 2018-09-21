@@ -32,7 +32,8 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-3">
-            <ul class="nav nav-sidebar">
+          <%= render  "partials/dashboard" %>
+            <!--<ul class="nav nav-sidebar">
               <br>
               <br>
               <li class="<%= params[:controller] == 'admin/applications' ? 'active' : '' %>">
@@ -47,7 +48,7 @@
                <%= link_to  "Rejected application (13)", admin_applications_path %>
               </li>
               <br>              
-            </ul>
+            </ul>-->
           </div>
           <div class="col-sm-9">
              <% if flash[:notice]%>

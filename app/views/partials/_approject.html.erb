@@ -1,0 +1,67 @@
+<%if current_user %>
+<%= form_for [:admin , @application] do |f| %>
+    <% if @application.errors.any? %>
+            <% @application.errors.full_messages.each do |msg|%>
+                <div class="alert alert-danger"><%= msg %></div>
+            <% end %>
+    <% end %>
+    <div class="row">
+        <div class="col-sm-3"><%= image_tag  "student-default.png", width:'100%' %></div>
+        <div class="col-sm-6">
+            <li><strong>Registration number:</strong> <%= @application.reg_number%></li>
+            <li><strong>Names:</strong> <%= @application.first_name %> <%= @application.last_name %></li>
+            <li><strong>Eamil:</strong> <%= @application.email %></li>
+            <li><strong>Telephone:</strong> <%= @application.telephone %></li>
+            <li><strong>Department:</strong> <%= @application.department %></li>
+            <li><strong>Academic Year:</strong> <%= @application.academic_year %></li>
+            <li><strong>Sponsor:</strong> <%= @application.sponsor %></li>
+            <div class="form-group">
+            <%= f.label :comments_section, class:'sr-only'%>
+            <%= f.text_area :comments, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+        </div>
+        </div>
+    </div>
+        <% if current_user.role == 'Dean'%>
+        <div class="form-group">
+            <%= f.check_box :is_dean_approve, {:class => "myclass", :style => "mystyle"}, 1,2 %>
+            <%= f.submit "Approve", class:'btn btn-primary' %>
+            <%= f.check_box :is_dean_approve, {:class => "myclass", :style => "mystyle"}, 0,2 %>
+            <%= f.submit "Reject", class:'btn btn-default'%>
+        </div>
+        <% end %>
+        <% if current_user.role == 'HOD'%>
+        <div class="form-group">
+            <%= f.label :Approve%>
+            <%= f.check_box :is_hod_approve, class:'btn btn-primary'%>
+            <%= f.label :Reject%>
+            <%= f.check_box :is_hod_approve, class:'btn btn-default' %>
+        </div>
+        <% end %>
+        <% if current_user.role == 'Finance'%>
+        <div class="form-group">
+            <%= f.label :Approve%>
+            <%= f.check_box :is_finance_approve, class:'btn btn-primary'%>
+            <%= f.label :Reject%>
+            <%= f.check_box :is_finance_approve, class:'btn btn-default' %>
+        </div>
+        <% end %>
+        <% if current_user.role == 'Warden'%>
+        <div class="form-group">
+            <%= f.label :Approve%>
+            <%= f.check_box :is_warden_approve, class:'btn btn-primary'%>
+            <%= f.label :Reject%>
+            <%= f.check_box :is_warden_approve, class:'btn btn-default' %>
+        </div>
+        <% end %>
+        <% if current_user.role == 'Librarian'%>
+        <div class="form-group">
+            <%= f.label :Approve%>
+            <%= f.check_box :is_librarian_approve, class:'btn btn-primary'%>
+            <%= f.label :Reject%>
+            <%= f.check_box :is_librarian_approve, class:'btn btn-default' %>
+        </div>
+        <% end %>
+     <% end %>
+<% else %>
+  <p>Unauthorized Access</p>
+<%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_032830) do
+ActiveRecord::Schema.define(version: 2018_09_20_235745) do
 
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 2018_09_20_032830) do
     t.integer "level"
     t.string "academic_year"
     t.string "sponsor"
-    t.boolean "is_dean_approve"
-    t.boolean "is_hod_approve"
-    t.boolean "is_warden_approve"
-    t.boolean "is_librarian_approve"
-    t.boolean "is_finance_approve"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comments"
     t.string "picture"
+    t.integer "is_dean_approve"
+    t.integer "is_hod_approve"
+    t.integer "is_finance_approve"
+    t.integer "is_warden_approve"
+    t.integer "is_librarian_approve"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_032830) do
     t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remember_digest"
     t.string "auth_token"
   end
 
