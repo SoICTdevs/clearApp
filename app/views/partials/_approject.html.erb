@@ -23,42 +23,73 @@
     </div>
         <% if current_user.role == 'Dean'%>
         <div class="form-group">
-            <%= f.check_box :is_dean_approve, {:class => "myclass", :style => "mystyle"}, 1,2 %>
-            <%= f.submit "Approve", class:'btn btn-primary' %>
-            <%= f.check_box :is_dean_approve, {:class => "myclass", :style => "mystyle"}, 0,2 %>
-            <%= f.submit "Reject", class:'btn btn-default'%>
+            <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?"}) do |f| %>
+                <%= f.hidden_field :is_dean_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?" }) do |f| %>
+            <%= f.hidden_field :is_dean_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
         </div>
         <% end %>
         <% if current_user.role == 'HOD'%>
         <div class="form-group">
-            <%= f.label :Approve%>
-            <%= f.check_box :is_hod_approve, class:'btn btn-primary'%>
-            <%= f.label :Reject%>
-            <%= f.check_box :is_hod_approve, class:'btn btn-default' %>
+            <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?"}) do |f| %>
+                <%= f.hidden_field :is_hod_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?" }) do |f| %>
+            <%= f.hidden_field :is_hod_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
         </div>
         <% end %>
+
         <% if current_user.role == 'Finance'%>
         <div class="form-group">
-            <%= f.label :Approve%>
-            <%= f.check_box :is_finance_approve, class:'btn btn-primary'%>
-            <%= f.label :Reject%>
-            <%= f.check_box :is_finance_approve, class:'btn btn-default' %>
+            <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?"}) do |f| %>
+                <%= f.hidden_field :is_finance_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?" }) do |f| %>
+            <%= f.hidden_field :is_finace_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
         </div>
         <% end %>
         <% if current_user.role == 'Warden'%>
-        <div class="form-group">
-            <%= f.label :Approve%>
-            <%= f.check_box :is_warden_approve, class:'btn btn-primary'%>
-            <%= f.label :Reject%>
-            <%= f.check_box :is_warden_approve, class:'btn btn-default' %>
+        <<div class="form-group">
+            <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?"}) do |f| %>
+                <%= f.hidden_field :is_warden_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?" }) do |f| %>
+            <%= f.hidden_field :is_warden_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
         </div>
         <% end %>
         <% if current_user.role == 'Librarian'%>
         <div class="form-group">
-            <%= f.label :Approve%>
-            <%= f.check_box :is_librarian_approve, class:'btn btn-primary'%>
-            <%= f.label :Reject%>
-            <%= f.check_box :is_librarian_approve, class:'btn btn-default' %>
+            <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?"}) do |f| %>
+                <%= f.hidden_field :is_librarian_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for([:admin, @application], remote: true, data: { confirm: "Are you sure?" }) do |f| %>
+            <%= f.hidden_field :is_librarian_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
         </div>
         <% end %>
      <% end %>

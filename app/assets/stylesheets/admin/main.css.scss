@@ -36,7 +36,7 @@ ul li a:hover{
     background: $color-btnhover !important;
     color: $color-button;
 }
-ul li a .active{
+ul li:active{
     text-decoration: none;
     width: 150px;
     height: 100px;
@@ -69,4 +69,7 @@ button a{
 button a:hover{
     text-decoration: none;
     color: $color-button;
+}
+form .form-group  form .approjectBtn{
+    display: inline;
 }
