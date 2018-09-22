@@ -8,7 +8,7 @@ class Student < ApplicationRecord
     validates :email, presence: true
     validates :reg_number, presence: true
     validates :password, presence: true
-    validates :password_confirmation, confirmation: true
+    validates :password, confirmation: true
 
     def self.authenticate(email, password)
         user = find_by_email(email)

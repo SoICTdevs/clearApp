@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :verify_logged_in
+  #before_action :verify_logged_in
   def new
     @student = Student.new
   end
@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     if @student.save
       flash[:notice] = "Student successfully registered!"
-      redirect_to root_path
+      redirect_to login_path
     else
       render 'new'
     end
@@ -21,8 +21,8 @@ class StudentsController < ApplicationController
   end
 
   def index
-    #@students = Student.all
-    @students = Student.find(params[:id])
+    @students = Student.all
+    #@students = Student.find(params[:id])
   end
 
   def show

@@ -25,13 +25,11 @@ ActiveRecord::Schema.define(version: 2018_09_22_202157) do
     t.string "sponsor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comments"
-    t.string "picture"
-    t.integer "is_dean_approve", default: 2, null: false
-    t.integer "is_hod_approve", default: 2, null: false
-    t.integer "is_finance_approve", default: 2, null: false
-    t.integer "is_warden_approve", default: 2, null: false
-    t.integer "is_librarian_approve", default: 2, null: false
+    t.integer "is_dean_approve"
+    t.integer "is_hod_approve"
+    t.integer "is_finance_approve"
+    t.integer "is_warden_approve"
+    t.integer "is_librarian_approve"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
