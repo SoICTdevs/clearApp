@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'applications/new'
+  get 'applications/create'
+  get 'applications/show'
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'sessions/create'
+  get 'logout' => 'sessions#destroy', :as => 'logout'
   namespace :admin do
     get 'applications/edit'
     get 'applications/update'
@@ -20,8 +26,6 @@ Rails.application.routes.draw do
     get 'users/show'
     get 'users/destroy'
   end
-  get 'applications/new'
-  get 'applications/create'
   get 'students/new'
   get 'students/create'
   get 'students/edit'
@@ -34,7 +38,8 @@ Rails.application.routes.draw do
     resources :users, :applications, :sessions 
   end
 
-  resources :applications, only: [:new, :create]
+  resources :applications, only: [:new, :create, :show]
+  resources :students, :sessions
   root 'students#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

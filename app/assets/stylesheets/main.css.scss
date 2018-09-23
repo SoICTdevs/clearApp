@@ -22,28 +22,22 @@ body{
 }
 ul li a{
     text-decoration: none;
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 60px;
     font-style: bold;
-    font-size: 18px;
+    font-size: 14px;
     background: $btn-board !important;
     color: $color-button;
 }
 ul li a:hover{
     text-decoration: none;
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 60px;
     background: $color-btnhover !important;
     color: $color-button;
 }
-ul li:active{
-    text-decoration: none;
-    width: 150px;
-    height: 100px;
-    background: $btn-active !important;
-    color: $color-button;
-}
-h3{
+
+h2{
     color: $color-title;
     font-style: bold;
 }
@@ -58,32 +52,17 @@ ul .logout a{
     background: $color-button !important;
 }
 ul .logout a:hover{
-    color: $color-logout; 
+    color: $color-btnhover; 
     font-size: 16px;
     background: $color-button !important;
 }
-button a{
-    text-decoration: none;
-    color: $color-button;
+ul .update a{
+    background: $color-title !important;
 }
-button a:hover{
-    text-decoration: none;
-    color: $color-button;
+ul .apply a{
+    background: $color-apply;
 }
-form .form-group  form .approjectBtn{
-    display: inline;
+ul .view a{
+    background: $color-view;
 }
-ul .adminlogin a{
-    color: $color-btnhover; 
-    font-size: 12px;
-    font-style: bold;
-    font-variant: bold;
-    background: $color-button !important;
-}
-ul .adminlogin a:hover{
-    color: $color-logout; 
-    font-size: 12px;
-    font-style: bold;
-    font-variant: bold;
-    background: $color-button !important;
-}
+

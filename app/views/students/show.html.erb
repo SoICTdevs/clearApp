@@ -1,2 +1,20 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h2 class="page-haeder">Welcome <%= current_user.reg_number%></h2>
+<div class="row">
+    <div class="col-md-8">
+        <ul class="nav">
+            <li class="update">
+                Before you do anything you have to update your profile by providing your academic information
+                <%= link_to  "Update your profile", edit_student_path(current_user)%>
+            </li>
+            <li class="apply">
+                Before you do anything you have to update your profile by providing your academic information
+                <%= link_to  "Apply Certificate", new_application_path%>
+            </li>
+            <li class="view">
+                Before you do anything you have to update your profile by providing your academic information
+                <%= link_to  "View Certificate", application_path(current_user)%>
+            </li>              
+        </ul>
+    </div>
+    <div class="col-md-4"><%= image_tag  "student-default.png", width:'100%' %></div>
+</div>

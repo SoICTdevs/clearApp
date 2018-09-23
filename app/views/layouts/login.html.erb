@@ -8,12 +8,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <ul class="nav navbar-nav navbar-right">
-    <li class="logout">
-      <%= link_to  "Logout", logout_path %>
+   <ul class="nav navbar-nav navbar-right">
+    <li class="adminlogin">
+      <%= link_to  "Staff Login", admin_login_path %>
     </li>
   </ul>
-  
   <body>
     <div class="container">
         <div class="row">

@@ -1,2 +1,23 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<% if @students.exists%>
+<div class="row">
+    <div class="col-md-8">
+     <div class="content">
+      <p>
+      <% @students.each do |student|%>
+        Before you do anything you have to update your profile by providing your academic information
+      </p>
+      <%= link_to  "Update your profile", edit_student_path(student), class:'btn btn-primary'%>
+      </div>
+       <p>
+        Before you do anything you have to update your profile by providing your academic information
+        <%= link_to  "Update your profile", edit_student_path(student), class:'btn btn-default'%>
+      </p>
+       <p>
+        Before you do anything you have to update your profile by providing your academic information
+        <%= link_to  "View Application", edit_student_path(student), class:'btn btn-success'%>
+      </p>
+    </div>
+    <div class="col-md-4"><%= image_tag  "student-default.png", width:'100%' %></div>
+</div>
+<% end %>
+<% end %>
