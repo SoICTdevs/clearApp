@@ -15,9 +15,19 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def update
+    @student = Student.find(params[:id])
+
+    if @student.update(student_params)
+      flash[:notice] = 'Student Details updated'
+
+      redirect_to student_path(current_user)
+      else
+        render 'new'
+      end
   end
 
   def index
@@ -33,6 +43,6 @@ class StudentsController < ApplicationController
   end
   private 
   def student_params
-    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :password, :auth_token)
+    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :password, :telephone, :sex, :department, :level, :academic_year, :sponsor, :auth_token)
   end
 end
