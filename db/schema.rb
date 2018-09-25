@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_190503) do
+ActiveRecord::Schema.define(version: 2018_09_25_194936) do
 
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2018_09_24_190503) do
     t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.string "auth_token"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

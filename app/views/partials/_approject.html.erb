@@ -17,7 +17,7 @@
         <li><strong>Sponsor:</strong> <%= @application.sponsor %></li>
         </div>
     </div>
-        <% if current_user.role == 'Dean'%>
+     <% if current_user.role == 'Dean'%>
 
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
@@ -35,6 +35,80 @@
             <%= f.submit "Reject", class: "btn btn-large btn-default" %>
         <% end %>
         </div>
+    <% elsif current_user.role == 'HOD'%>
+
+        <div class="form-group">
+            <%= form_for [:admin, @application] do |f| %>
+                <%= f.hidden_field :is_hod_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for [:admin, @application] do |f| %>
+            <div class="form-group">
+                <%= f.label :comments_section, class:'sr-only'%>
+                <%= f.text_area :hod_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+            </div>
+            <%= f.hidden_field :is_hod_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
+        </div>
+    <% elsif current_user.role == 'Finance'%>
+
+        <div class="form-group">
+            <%= form_for [:admin, @application] do |f| %>
+                <%= f.hidden_field :is_finance_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for [:admin, @application] do |f| %>
+            <div class="form-group">
+                <%= f.label :comments_section, class:'sr-only'%>
+                <%= f.text_area :finance_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+            </div>
+            <%= f.hidden_field :is_finance_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
+        </div>
+    <% elsif current_user.role == 'Warden'%>
+
+        <div class="form-group">
+            <%= form_for [:admin, @application] do |f| %>
+                <%= f.hidden_field :is_warden_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for [:admin, @application] do |f| %>
+            <div class="form-group">
+                <%= f.label :comments_section, class:'sr-only'%>
+                <%= f.text_area :warden_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+            </div>
+            <%= f.hidden_field :is_warden_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
+        </div>
+    <% elsif current_user.role == 'Librarian'%>
+
+        <div class="form-group">
+            <%= form_for [:admin, @application] do |f| %>
+                <%= f.hidden_field :is_librarian_approve, :value => 1 %>
+                <%= f.submit "Approve", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+        <div class="approjectBtn">
+         <%= form_for [:admin, @application] do |f| %>
+            <div class="form-group">
+                <%= f.label :comments_section, class:'sr-only'%>
+                <%= f.text_area :librarian_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+            </div>
+            <%= f.hidden_field :is_librarian_approve, :value => 0 %>
+            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+        <% end %>
+        </div>
+     <% else %>
+     <p>User not found, Try again!!!</p>
      <% end %>
 <% else %>
   <p>Unauthorized Access</p>

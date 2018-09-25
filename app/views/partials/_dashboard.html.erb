@@ -34,36 +34,36 @@
         <br>              
     </ul>
   <% elsif current_user.role == 'Finance'%>
-    <ul class="nav nav-sidebar">
+   <ul class="nav nav-sidebar">
         <br>
         <br>
-        <li class="<%= current_user.role == 'Finance' ? 'active' : '' %>">
-        <%= link_to  "New application (#{Application.count('is_finance_approve = null')})", admin_applications_path(Application.find_by_is_finance_approve(0)) %>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
         </li>
         <br>
         <li>
-        <%= link_to  "Approved application (#{Application.count('is_finance_approve = 1')})", admin_applications_path(Application.find_by_is_finance_approve(1)) %>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
         </li>
         <br>
         <li>
-        <%= link_to  "Rejected application (#{Application.count('is_finance_approve = 0')})", admin_applications_path(Application.find_by_is_finance_approve(nil)) %>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
         </li>
         <br>              
     </ul>
-  <% elsif current_user.role == 'Waden'%>
+  <% elsif current_user.role == 'Warden'%>
     <ul class="nav nav-sidebar">
         <br>
         <br>
-        <li class="<%= current_user.role == 'Waden' ? 'active' : '' %>">
-        <%= link_to  "New application (#{Application.count('is_warden_approve = null')})", admin_applications_path(Application.find_by_is_warden_approve(0)) %>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
         </li>
         <br>
         <li>
-        <%= link_to  "Approved application (#{Application.count('is_warden_approve = 1')})", admin_applications_path(Application.find_by_is_warden_approve(1)) %>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
         </li>
         <br>
         <li>
-        <%= link_to  "Rejected application (#{Application.count('is_warden_approve = 0')})", admin_applications_path(Application.find_by_is_warden_approve(nil)) %>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
         </li>
         <br>              
     </ul>
@@ -71,16 +71,16 @@
     <ul class="nav nav-sidebar">
         <br>
         <br>
-        <li class="<%= current_user.role == 'Librarian' ? 'active' : '' %>">
-        <%= link_to  "New application (#{Application.count('is_librarian_approve = null')})", admin_applications_path(Application.find_by_is_librarian_approve(0)) %>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
         </li>
         <br>
         <li>
-        <%= link_to  "Approved application (#{Application.count('is_librarian_approve = 1')})", admin_applications_path(Application.find_by_is_librarian_approve(1)) %>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
         </li>
         <br>
         <li>
-        <%= link_to  "Rejected application (#{Application.count('is_librarian_approve = 0')})", admin_applications_path(Application.find_by_is_librarian_approve(nil)) %>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
         </li>
         <br>              
     </ul>

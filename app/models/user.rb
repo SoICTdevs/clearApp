@@ -7,7 +7,15 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :role, presence: true
     validates :password, presence: true
-    validates :password_confirmation, confirmation: true
+    #validate_presence_of :password, :on => :create
+    validates :password, confirmation: true
+
+    def send_password_reset
+        generate_token(:password_reset_token)
+        self.password_reset_sent_at = Time.zone.now
+        save!
+        UserMailer.password_reset(self).deliver
+    end
 
     def self.authenticate(email, password)
         user = find_by_email(email)

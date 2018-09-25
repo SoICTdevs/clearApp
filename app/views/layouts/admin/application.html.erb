@@ -21,7 +21,7 @@
               <%= link_to  "Logout", admin_logout_path %>
             </li>
           </ul>
-          <h3>Welcome to SoICT clearance application</h3>
+          <h2 class="page-header"><%= @page_title ? @page_title : 'Welcome to SoICT clearance application' %></h2>
         </div>
         <%if current_user %>
         <div class="email"><strong>Logged in as:</strong> <%= current_user.role%></div>
@@ -33,22 +33,6 @@
         <div class="row">
           <div class="col-sm-3">
             <%= render  "partials/dashboard" %>
-              <!--<ul class="nav nav-sidebar">
-                <br>
-                <br>
-                <li class="<%= params[:controller] == 'admin/applications' ? 'active' : '' %>">
-                <%= link_to  "New application (3)", admin_applications_path %>
-                </li>
-                <br>
-                <li>
-                <%= link_to  "Approved application (1)", admin_applications_path %>
-                </li>
-                <br>
-                <li>
-                <%= link_to  "Rejected application (13)", admin_applications_path %>
-                </li>
-                <br>              
-              </ul>-->
           </div>
           <div class="col-sm-9">
              <% if flash[:notice]%>

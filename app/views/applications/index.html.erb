@@ -11,27 +11,27 @@
 <tr>
   <td>Dean of School</td>
   <td><%= if data.is_dean_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_dean_approve == 0 then application.dean_comment elsif data.is_dean_approve == 2 then 'Pending...' else 'No comment' end %></td>
+  <td><%= if data.is_dean_approve == 0 then data.dean_comment elsif data.is_dean_approve == 2 then 'Pending...' else 'No comment' end %></td>
 </tr>
 <tr>
   <td>Head of Department</td>
   <td><%= if data.is_hod_approve == 1 then 'approved' elsif data.is_hod_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_hod_approve == 0 then application.hod_comment elsif data.is_hod_approve == 2 then 'pending...'  else 'No comment' end %></td>
+  <td><%= if data.is_hod_approve == 0 then data.hod_comment elsif data.is_hod_approve == 2 then 'pending...'  else 'No comment' end %></td>
 </tr>
 <tr>
   <td>Finance</td>
   <td><%= if data.is_finance_approve == 1 then 'approved' elsif data.is_finance_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_finance_approve == 0 then application.finance_comment elsif data.is_finance_approve == 2 then 'Pending...' else 'No comment' end %></td>
+  <td><%= if data.is_finance_approve == 0 then data.finance_comment elsif data.is_finance_approve == 2 then 'Pending...' else 'No comment' end %></td>
 </tr>
 <tr>
   <td>Librarian</td>
   <td><%= if data.is_librarian_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_librarian_approve == 0 then application.librarian_comment elsif data.is_librarian_approve == 2 then 'pending...' else 'No comment' end %></td>
+  <td><%= if data.is_librarian_approve == 0 then data.librarian_comment elsif data.is_librarian_approve == 2 then 'pending...' else 'No comment' end %></td>
 </tr>
 <tr>
   <td>Student Welfare</td>
   <td><%= if data.is_warden_approve == 1 then 'approved' elsif data.is_warden_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_warden_approve == 0 then application.warden_comment elsif data.is_warden_approve == 2 then 'Pending...' else 'No comment' end %></td>
+  <td><%= if data.is_warden_approve == 0 then data.warden_comment elsif data.is_warden_approve == 2 then 'Pending...' else 'No comment' end %></td>
 </tr>
  <% end %>   
 </table>

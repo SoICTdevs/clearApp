@@ -33,55 +33,61 @@ end
   
   private
    def applicatin_params
-    params.require(:application).permit(:is_dean_approve, :student_id, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :libralian_comment, :warden_comment, :finance_comment,  :hod_comment, :dean_comment)
+    params.require(:application).permit(:is_dean_approve, :student_id, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :librarian_comment, :warden_comment, :finance_comment,  :hod_comment, :dean_comment)
    end
   def dashboard
-    if current_user.role == 'Dean' || 'dean' || 'DEAN'
-      @apnew = Application.where('is_dean_approve = 2').count
-      @apapprov = Application.where('is_dean_approve = 1').count
-      @apreject = Application.where('is_dean_approve = 0').count
-    elsif current_user.role == 'Hod' || 'hod' || 'HOD'
-      @apnew = Application.where('is_hod_approve = 2').count
-      @apapprov = Application.where('is_hod_approve = 1').count
-      @apreject = Application.where('is_hod_approve = 0').count
-    elsif current_user.role == 'Warden' || 'warden' || 'WARDEN'
-      @apnew = Application.where('is_warden_approve = 2').count
-      @apapprov = Application.where('is_warden_approve = 1').count
-      @apreject = Application.where('is_warden_approve = 0').count
-    elsif current_user.role == 'Finance' || 'finance' || 'FINANCE'
-      @apnew = Application.where('is_finance_approve = 2').count
-      @apapprov = Application.where('is_finance_approve = 1').count
-      @apreject = Application.where('is_finance_approve = 0').count
-    elsif current_user.role == 'Librarian' || 'librarian' || 'LIBRARIAN'
-      @apnew = Application.where('is_librarian_approve = 2').count
-      @apapprov = Application.where('is_librarian_approve = 1').count
-      @apreject = Application.where('is_librarian_approve = 0').count
+    if current_user
+      if current_user.role == 'Dean'
+        @apnew = Application.where('is_dean_approve = 2').count
+        @apapprov = Application.where('is_dean_approve = 1').count
+        @apreject = Application.where('is_dean_approve = 0').count
+      elsif current_user.role == 'HOD'
+        @apnew = Application.where('is_hod_approve = 2').count
+        @apapprov = Application.where('is_hod_approve = 1').count
+        @apreject = Application.where('is_hod_approve = 0').count
+      elsif current_user.role == 'Warden'
+        @apnew = Application.where('is_warden_approve = 2').count
+        @apapprov = Application.where('is_warden_approve = 1').count
+        @apreject = Application.where('is_warden_approve = 0').count
+      elsif current_user.role == 'Finance'
+        @apnew = Application.where('is_finance_approve = 2').count
+        @apapprov = Application.where('is_finance_approve = 1').count
+        @apreject = Application.where('is_finance_approve = 0').count
+      elsif current_user.role == 'Librarian'
+        @apnew = Application.where('is_librarian_approve = 2').count
+        @apapprov = Application.where('is_librarian_approve = 1').count
+        @apreject = Application.where('is_librarian_approve = 0').count
+      else
+        flash.now.alert = 'System is not recognize you as one of users!!'
+      end
     end
   end
 
     def show_applicants
-      if current_user.role == 'Dean' || 'dean' || 'DEAN'
-        @new = Application.where('is_dean_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @reject = Application.where('is_dean_approve = 0').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @approve = Application.where('is_dean_approve = 1').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      elsif current_user.role == 'Hod' || 'hod' || 'HOD'
-        @new = Application.where('is_hod_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @reject = Application.where('is_hod_approve = 0').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @approve = Application.where('is_hod_approve = 1').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      elsif current_user.role == 'Warden' || 'warden' || 'WARDEN'
-        @new = Application.where('is_warden_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @reject = Application.where('is_warden_approve = 0').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @approve = Application.where('is_warden_approve = 1').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      elsif current_user.role == 'Finance' || 'finance' || 'FINANCE'
-        @new = Application.where('is_finance_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @reject = Application.where('is_finance_approve = 0').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @approve = Application.where('is_finance_approve = 1').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      elsif current_user.role == 'Librarian' || 'librarian' || 'LIBRARIAN'
-        @new = Application.where('is_librarian_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @reject = Application.where('is_librarian_approve = 0').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @approve = Application.where('is_librarian_approve = 1').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      else
-        flash.now.alert = 'You are not registered as SoICT Clearance Application User!!'
+      if current_user
+        if current_user.role == 'Dean'
+          @new = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        elsif current_user.role == 'HOD'
+          @new = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        elsif current_user.role == 'Warden'
+          @new = Application.where("is_warden_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_warden_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_warden_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        elsif current_user.role == 'Finance'
+          @new = Application.where("is_finance_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_finance_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_finance_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        elsif current_user.role == 'Librarian'
+          @new = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        else
+          flash.now.alert = 'You are not registered as SoICT Clearance Application User!!'
+        end
       end
       
     end

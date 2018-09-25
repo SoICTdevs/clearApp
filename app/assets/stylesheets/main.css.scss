@@ -44,7 +44,11 @@ ul li:active{
     background: $btn-active !important;
     color: $color-button;
 }
-h3{
+.page-header{
+    color: $color-title;
+    font-style: bold;
+}
+h2{
     color: $color-title;
     font-style: bold;
 }
@@ -85,5 +89,15 @@ form .form-group  form .approjectBtn{
 .btn:hover{
     background: $color-btnhover;
     color: $btn-board
+}
+.btn-reset{
+    background: $btn-active;
+    color: $color-button;
+    border: 0ch;
+}
+.btn-reset:hover{
+    background: $color-btnhover;
+    color: $color-button;
+    border: 0ch;
 }
 
