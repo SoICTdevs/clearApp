@@ -33,7 +33,7 @@ end
   
   private
    def applicatin_params
-    params.require(:application).permit(:is_dean_approve, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :comments)
+    params.require(:application).permit(:is_dean_approve, :student_id, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :libralian_comment, :warden_comment, :finance_comment,  :hod_comment, :dean_comment)
    end
   def dashboard
     if current_user.role == 'Dean' || 'dean' || 'DEAN'

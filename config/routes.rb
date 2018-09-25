@@ -38,8 +38,9 @@ Rails.application.routes.draw do
     resources :users, :applications, :sessions 
   end
 
-  resources :applications, only: [:new, :create, :show]
-  resources :students, :sessions
-  root 'students#index'
+  resources :applications, only: [:new, :create, :show, :index]
+  resources :students, only: [:edit, :update, :show, :new, :create] 
+  resources :sessions
+  root 'students#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

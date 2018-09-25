@@ -1,4 +1,6 @@
 class Admin::ApplicationController < ActionController::Base
+
+  layout 'admin/application'
     
     helper_method :current_user
 

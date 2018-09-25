@@ -73,17 +73,3 @@ button a:hover{
 form .form-group  form .approjectBtn{
     display: inline;
 }
-ul .adminlogin a{
-    color: $color-btnhover; 
-    font-size: 12px;
-    font-style: bold;
-    font-variant: bold;
-    background: $color-button !important;
-}
-ul .adminlogin a:hover{
-    color: $color-logout; 
-    font-size: 12px;
-    font-style: bold;
-    font-variant: bold;
-    background: $color-button !important;
-}

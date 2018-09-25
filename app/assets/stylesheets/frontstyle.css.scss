@@ -22,8 +22,8 @@ body{
 }
 ul li a{
     text-decoration: none;
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 60px;
     font-style: bold;
     font-size: 18px;
     background: $btn-board !important;
@@ -31,16 +31,9 @@ ul li a{
 }
 ul li a:hover{
     text-decoration: none;
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 60px;
     background: $color-btnhover !important;
-    color: $color-button;
-}
-ul li:active{
-    text-decoration: none;
-    width: 150px;
-    height: 100px;
-    background: $btn-active !important;
     color: $color-button;
 }
 h3{
@@ -62,17 +55,6 @@ ul .logout a:hover{
     font-size: 16px;
     background: $color-button !important;
 }
-button a{
-    text-decoration: none;
-    color: $color-button;
-}
-button a:hover{
-    text-decoration: none;
-    color: $color-button;
-}
-form .form-group  form .approjectBtn{
-    display: inline;
-}
 
 .btn{
     width: 80px;
@@ -86,3 +68,6 @@ form .form-group  form .approjectBtn{
     color: $btn-board
 }
 
+
+
+    

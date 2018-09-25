@@ -1,14 +1,21 @@
 class Student < ApplicationRecord
+    #has_namy :applications
+
     attr_accessor :password
-    before_save :encrypt_password
+    before_create :check_pass
+    before_save :encrypt_password, only: [:new, :create]
     before_create { generate_token(:auth_token) }
 
-    validates :first_name, presence: true
-    validates :last_name, presence: true
-    validates :email, presence: true
-    validates :reg_number, presence: true
-    validates :password, presence: true
-    validates :password_confirmation, confirmation: true
+
+        validates :first_name, presence: true
+        validates :last_name, presence: true
+        validates :email, presence: true
+        validates :reg_number, presence: true
+    private def check_pass
+        validates :password, presence: true 
+        validates :password, confirmation: true
+    end
+   
 
     def self.authenticate(email, password)
         user = find_by_email(email)
