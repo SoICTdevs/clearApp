@@ -19,8 +19,11 @@ class ApplicationsController < ApplicationController
     @pplications = Application.where('student_id = current_user.id')
   end
   def index
-    @applications = Application.all
-    #@applications = Application.where('student_id = current_user.id')
+    if current_user
+      #@applications = Application.all
+      @applications = Application.where("student_id = #{current_user.id}")
+    end
+   
   end
   private 
   def application_params

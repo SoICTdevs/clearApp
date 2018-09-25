@@ -2,7 +2,7 @@ class Student < ApplicationRecord
     #has_namy :applications
 
     attr_accessor :password
-    before_create :check_pass
+    #before_create :check_pass
     before_save :encrypt_password, only: [:new, :create]
     before_create { generate_token(:auth_token) }
 
@@ -11,10 +11,10 @@ class Student < ApplicationRecord
         validates :last_name, presence: true
         validates :email, presence: true
         validates :reg_number, presence: true
-    private def check_pass
+    #private def check_pass
         validates :password, presence: true 
         validates :password, confirmation: true
-    end
+   # end
    
 
     def self.authenticate(email, password)

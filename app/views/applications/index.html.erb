@@ -1,6 +1,6 @@
 <% if @applications.exists? %>
 <h2 class="page-header"><%= current_user.reg_number %> your application feedback</h2>
-<% if Applications.is_dean_approve != 2 or Applications.is_hod_approve != 2 or Application.is_warden_approve != 2 or Application.is_finance_approve != 2 or Application.is_librarian_approve != 2 %>
+
 <table class="table table-striped">
 <tr>
   <th>School Administrator</th>
@@ -11,13 +11,31 @@
 <tr>
   <td>Dean of School</td>
   <td><%= if data.is_dean_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
-  <td><%= if data.is_dean_approve == 0 then application.dean_comment else 'No comment' end %></td>
+  <td><%= if data.is_dean_approve == 0 then application.dean_comment elsif data.is_dean_approve == 2 then 'Pending...' else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Head of Department</td>
+  <td><%= if data.is_hod_approve == 1 then 'approved' elsif data.is_hod_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_hod_approve == 0 then application.hod_comment elsif data.is_hod_approve == 2 then 'pending...'  else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Finance</td>
+  <td><%= if data.is_finance_approve == 1 then 'approved' elsif data.is_finance_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_finance_approve == 0 then application.finance_comment elsif data.is_finance_approve == 2 then 'Pending...' else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Librarian</td>
+  <td><%= if data.is_librarian_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_librarian_approve == 0 then application.librarian_comment elsif data.is_librarian_approve == 2 then 'pending...' else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Student Welfare</td>
+  <td><%= if data.is_warden_approve == 1 then 'approved' elsif data.is_warden_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_warden_approve == 0 then application.warden_comment elsif data.is_warden_approve == 2 then 'Pending...' else 'No comment' end %></td>
 </tr>
  <% end %>   
 </table>
-<%else%>
-<p>Your application is still in process! Back later</p>
-<%end%>
+
 <%else %>
-<p><strong>You have not applied to your clearance certificate</strong> <%= link_to  "Apply now", new_application_path %></p>
+<p><strong>You have not applied to your clearance certificate</strong> <%= link_to  "Apply now", new_application_path, class:'btn btn-primary' %></p>
 <%end%>
