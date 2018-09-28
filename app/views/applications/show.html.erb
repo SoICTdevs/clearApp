@@ -1,0 +1,23 @@
+<% if current_user%>
+<div class="row">
+    <div class="col-md-8">
+     <div class="content">
+      <p>
+      <% @applications.each do |student|%>
+        Before you do anything you have to update your profile by providing your academic information
+      </p>
+      <%= link_to  "Update your profile", edit_student_path(student), class:'btn btn-primary'%>
+      </div>
+       <p>
+        Before you do anything you have to update your profile by providing your academic information
+        <%= link_to  "Update your profile", edit_student_path(student), class:'btn btn-default'%>
+      </p>
+       <p>
+        Before you do anything you have to update your profile by providing your academic information
+        <%= link_to  "View Application", edit_student_path(student), class:'btn btn-success'%>
+      </p>
+    </div>
+    <div class="col-md-4"><%= image_tag  "student-default.png", width:'100%' %></div>
+</div>
+<% end %>
+<% end %>
