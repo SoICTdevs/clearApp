@@ -1,0 +1,88 @@
+<% if current_user%>
+  <% if current_user.role == 'Dean'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
+        </li>
+        <br>              
+    </ul>
+  <% elsif current_user.role == 'HOD'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
+        </li>
+        <br>              
+    </ul>
+  <% elsif current_user.role == 'Finance'%>
+   <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
+        </li>
+        <br>              
+    </ul>
+  <% elsif current_user.role == 'Warden'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
+        </li>
+        <br>              
+    </ul>
+    <% elsif current_user.role == 'Librarian'%>
+    <ul class="nav nav-sidebar">
+        <br>
+        <br>
+        <li class="active">
+        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
+        </li>
+        <br>
+        <li>
+        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
+        </li>
+        <br>              
+    </ul>
+  <% end %>
+<% end %>

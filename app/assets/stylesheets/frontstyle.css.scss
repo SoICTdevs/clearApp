@@ -1,0 +1,82 @@
+@import "partials/variables";
+body{
+    background: $color;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.row ul{
+    padding-right: 5%;
+}
+.urlogo{
+    padding: 20% 0 0 5%;
+}
+.content{
+    padding-top: 15%;
+}
+.btn{
+    border: 0ch;
+    border-radius: 0;
+}
+.form-control{
+    padding: 2%;
+
+    border-radius: 0;
+}
+ul li a{
+    text-decoration: none;
+    width: 100px;
+    height: 60px;
+    font-style: bold;
+    font-size: 18px;
+    background: $btn-board !important;
+    color: $color-button;
+
+}
+ul li a:hover{
+    text-decoration: none;
+    width: 100px;
+    height: 60px;
+    background: $color-btnhover !important;
+    color: $color-button;
+}
+h3{
+    color: $color-title;
+    font-style: bold;
+}
+ul{
+    display: inline;
+}
+ul .logout a{
+    color: $color-logout; 
+    font-size: 12px;
+    font-style: bold;
+    font-variant: bold;
+    background: $color-button !important;
+}
+ul .logout a:hover{
+    color: $color-logout; 
+    font-size: 16px;
+    background: $color-button !important;
+}
+
+.btn{
+    width: 90px;
+}
+.btn-default{
+    background: $btn-board;
+    color: $color-button;
+}
+.btn:hover{
+    background: $color-btnhover;
+    color: $btn-board
+}
+h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: $color-title;
+}
+th{
+    font-family: Tahoma;
+}
+
+
+
+    

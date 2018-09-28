@@ -1,0 +1,51 @@
+<%= form_for  @student do |f| %>
+<h2 class="form-signin-heading">Student Registration Form</h2>
+    <% if @student.errors.any? %>
+        <% @student.errors.full_messages.each do |msg| %>
+           <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+        
+    <% end %>
+    <div class="form-group">
+        <%= f.label :reg_number, class:'sr-only' %>
+        <%= f.text_field :reg_number, class:'form-control', placeholder:'Registration Number' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :first_name, class:'sr-only' %>
+        <%= f.text_field :first_name, class:'form-control', placeholder:'First Name' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :last_name, class:'sr-only' %>
+        <%= f.text_field :last_name, class:'form-control', placeholder:'Last Name' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :sex, class:'sr-only' %>
+        <%= f.text_field :sex, class:'form-control', placeholder:'Sex'  %>
+    </div>
+    <div class="form-group">
+        <%= f.label :email, class:'sr-only' %>
+        <%= f.text_field :email, class:'form-control', placeholder:'Email address' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :department, class:'sr-only' %>
+        <%= f.text_field :department, class:'form-control', placeholder:'Department' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :academic_year, class:'sr-only' %>
+        <%= f.text_field :academic_year, class:'form-control', placeholder:'Academic year' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :level, class:'sr-only' %>
+        <%= f.number_field :level, class:'form-control', placeholder:'Year of study or level' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :sponsor, class:'sr-only' %>
+        <%= f.text_field :sponsor, class:'form-control', placeholder:'Sponsor' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :telephone, class:'sr-only' %>
+        <%= f.text_field :telephone, class:'form-control', placeholder:'Telephone number' %>
+    </div>
+    <%= f.submit "Submit", class:'btn btn-primary' %>
+    <%= link_to  "Cancel", student_path(current_user), class:'btn btn-default' %>
+<% end %>

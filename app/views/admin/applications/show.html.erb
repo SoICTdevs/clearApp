@@ -1,0 +1,83 @@
+<% if @new %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Registration Number</th>
+        <th>Departmentr</th>
+        <th>Level</th>
+        <th>Applied At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @new.each do |application|%>
+      <tbody>
+        <tr>
+          <td><%= application.reg_number%></td>
+          <td><%= application.department%></td>
+          <td><%= application.level%></td>
+          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+        </tr>     
+      </tbody>
+    <% end%>
+  </table>
+  <%= will_paginate @approve%>
+</div>
+<% elsif @approve %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Registration Number</th>
+        <th>Departmentr</th>
+        <th>Level</th>
+        <th>Applied At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @approve.each do |application|%>
+      <tbody>
+        <tr>
+          <td><%= application.reg_number%></td>
+          <td><%= application.department%></td>
+          <td><%= application.level%></td>
+          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+        </tr>     
+      </tbody>
+    <% end%>
+  </table>
+  <%= will_paginate @new%>
+</div>
+<% elsif @reject %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Registration Number</th>
+        <th>Departmentr</th>
+        <th>Level</th>
+        <th>Applied At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @reject.each do |application|%>
+      <tbody>
+        <tr>
+          <td><%= application.reg_number%></td>
+          <td><%= application.department%></td>
+          <td><%= application.level%></td>
+          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+        </tr>     
+      </tbody>
+    <% end%>
+  </table>
+  <%= will_paginate @reject%>
+</div>
+<% else %>
+<p>No applications currently avaible</p>
+<% end %>
+
+

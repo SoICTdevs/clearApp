@@ -1,0 +1,8 @@
+<%= form_tag admin_password_resets_path, :method => :post, :class=>'form-signin' do %>
+  <h2 class="form-signin-heading">Password reset</h2>
+  <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+     <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
+  </div>
+  <%= submit_tag "Reset Password", class:'btn-reset'%>
+<% end %>
