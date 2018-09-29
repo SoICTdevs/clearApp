@@ -29,6 +29,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'mail_form', '~> 1.7', '>= 1.7.1'
 #gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem "paperclip", "~> 6.0.0"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

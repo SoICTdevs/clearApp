@@ -16,5 +16,9 @@
             </li>              
         </ul>
     </div>
+    <% if current_user.profile_picture != nil %>
+    <div class="col-md-4"><%= image_tag current_user.profile_picture.url(:medium) %></div>
+    <% else %>
     <div class="col-md-4"><%= image_tag  "student-default.png", width:'100%' %></div>
+    <%end%>
 </div>

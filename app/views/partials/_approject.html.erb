@@ -4,8 +4,15 @@
                 <div class="alert alert-danger"><%= msg %></div>
             <% end %>
     <% end %>
+    <br/>
+    <br/>
     <div class="row">
-      <div class="col-sm-3"><%= image_tag  "student-default.png", width:'100%' %></div>
+      <% if @application.profile_picture != nil %>
+        <div class="col-sm-3"><%= image_tag @application.profile_picture.url(:medium), width:'100%' %></div>
+        <% else %>
+        <div class="col-sm-3"><%= image_tag  "student-default.png", width:'100%' %></div>
+      <%end%>
+      <br/>
       <div class="col-sm-6">
         
         <li><strong>Registration number:</strong> <%= @application.reg_number%></li>
@@ -112,4 +119,4 @@
      <% end %>
 <% else %>
   <p>Unauthorized Access</p>
-<%end%>
+<% end %>

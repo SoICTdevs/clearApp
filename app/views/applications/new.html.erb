@@ -51,6 +51,10 @@
     <%= f.label :student_id, class:'hidden' %>
     <%= f.number_field :student_id, class:'hidden', placeholder:'Telephone number', value:"#{current_user.id}"  %>
 </div>
+<div class="form-group">
+    <%= f.label :profile_picture, class:'sr-only' %>
+    <%= f.file_field :profile_picture, class:'form-control', placeholder:'Telephone number' %>
+</div>
 <%= f.submit "Submit", class:'btn btn-primary' %>
 <%= link_to  "Cancel", student_path(current_user), class:'btn btn-default' %>
 <% end %>

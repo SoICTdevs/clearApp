@@ -7,10 +7,10 @@ body{
     padding-right: 5%;
 }
 .urlogo{
-    padding: 20% 0 0 5%;
+    padding: 10% 0 0 5%;
 }
 .content{
-    padding-top: 15%;
+    padding-top: 10%;
 }
 .btn{
     border: 0ch;
@@ -23,17 +23,17 @@ body{
 }
 ul li a{
     text-decoration: none;
-    width: 100px;
+    width: 110px;
     height: 60px;
     font-style: bold;
-    font-size: 18px;
-    background: $btn-board !important;
+    font-size: 14px;
+    background: $btn-active !important;
     color: $color-button;
 
 }
 ul li a:hover{
     text-decoration: none;
-    width: 100px;
+    width: 110px;
     height: 60px;
     background: $color-btnhover !important;
     color: $color-button;
@@ -76,6 +76,19 @@ h2{
 th{
     font-family: Tahoma;
 }
+ul .staff-login{
+    background: none !important;
+    font-size: 14px;
+    font-family: Tohoma;
+    color: $color-title;
+}
+ul .staff-login:hover{
+    background: none !important;
+    font-size: 14px;
+    font-family: Tohoma;
+    color: $color-btnhover;
+}
+
 
 
 

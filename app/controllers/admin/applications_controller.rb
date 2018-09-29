@@ -19,13 +19,16 @@ class Admin::ApplicationsController < Admin::ApplicationController
 end
 
   def index
-    @applications = Application.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    if params[:search]
+    else 
+      @applications = Application.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    end
 
   end
 
   def show
     #@applications = Application.find(params[:id]).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @applications = Application.where(params[:id])    
+    @applications = Application.where(params[:id])       
   end
 
   def destroy
@@ -33,7 +36,7 @@ end
   
   private
    def applicatin_params
-    params.require(:application).permit(:is_dean_approve, :student_id, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :librarian_comment, :warden_comment, :finance_comment,  :hod_comment, :dean_comment)
+    params.require(:application).permit(:is_dean_approve, :is_hod_approve, :is_warden_approve, :is_finance_approve, :is_librarian_approve, :librarian_comment, :warden_comment, :finance_comment,  :hod_comment, :dean_comment)
    end
   def dashboard
     if current_user
@@ -57,6 +60,8 @@ end
         @apnew = Application.where('is_librarian_approve = 2').count
         @apapprov = Application.where('is_librarian_approve = 1').count
         @apreject = Application.where('is_librarian_approve = 0').count
+      elsif current_user.role == 'Registrar'
+        @application = Application.search(params[:search]).all
       else
         flash.now.alert = 'System is not recognize you as one of users!!'
       end
@@ -85,6 +90,8 @@ end
           @new = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
           @reject = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
           @approve = Application.where("is_librarian_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        elsif current_user.role == 'Registrar'
+          @application = Application.find(params[:id]) 
         else
           flash.now.alert = 'You are not registered as SoICT Clearance Application User!!'
         end

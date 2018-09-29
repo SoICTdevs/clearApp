@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :verify_logged_in, only: [:edit, :update, :show, :destory]
+  layout 'login', only: [:new, :create]
+  before_action :verify_logged_in, only: [:edit, :update, :show, :destory, :index]
   def new
     @student = Student.new
   end
@@ -45,6 +46,6 @@ class StudentsController < ApplicationController
   end
   private 
   def student_params
-    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :level, :academic_year, :sponsor, :sex, :department, :telephone)
+    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :level, :academic_year, :profile_picture, :confirm_password, :sponsor, :sex, :department, :telephone)
   end
 end

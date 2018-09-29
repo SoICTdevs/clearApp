@@ -1,22 +1,21 @@
 class Student < ApplicationRecord
     #has_namy :applications
 
+    has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/student-default.jpg"
+    validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
+
     attr_accessor :password
     #before_create :check_pass
     before_save :encrypt_password, only: [:new, :create]
     before_create { generate_token(:auth_token) }
 
-     #validate_presence_of(:password, :on => :create) 
+    validates_presence_of :password, :on => :create
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :email, presence: true
+    validates :reg_number, presence: true
+    validates :password, confirmation: true
 
-
-        validates :first_name, presence: true
-        validates :last_name, presence: true
-        validates :email, presence: true
-        validates :reg_number, presence: true
-    #private def check_pass
-        #validates :password, presence: true 
-        #validates :password, confirmation: true
-   # end
    
 
     def self.authenticate(email, password)

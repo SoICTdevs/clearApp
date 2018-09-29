@@ -84,5 +84,14 @@
         </li>
         <br>              
     </ul>
+  <% elsif current_user.role == 'Registrar'%>
+  <br/>
+  <br/>
+   <%= form_tag(admin_applications_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
+        <div class="form-group">
+            <%= number_field_tag :search, params[:search], placeholder:"Search registration number", class:'form-control'%>
+        </div>
+        <%= submit_tag "Search", :name => nil, class:'btn btn-primary' %>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>

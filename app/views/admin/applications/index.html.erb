@@ -1,3 +1,24 @@
+<%if current_user.role == 'Registrar'%>
+  <% if params[:search] %>
+  <br/>
+  <br/>
+  <% if @application.exists? %>
+    <% if params[:controller] == 'admin/applications' %>
+      <div class="list-group">
+        <% @application.each do |application| %>
+        <%= link_to  application.reg_number, admin_application_path(application.id), class:'list-group-item' %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+     <p>No student is not found check <strong class="page-header">Registration number</strong></p>
+     <p>or</p>
+     <p>Student is<strong class="page-header"> not yet Applied</strong> for clearence</p>
+     
+     <p>
+  <% end %>
+  <% end %>
+<% else %>  
 <% if @applications.exists? %>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -26,6 +47,7 @@
 </div>
 <% else %>
 <p>No applications currently avaible</p>
+<% end %>
 <% end %>
 
 
