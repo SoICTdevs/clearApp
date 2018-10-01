@@ -27,8 +27,7 @@ end
   end
 
   def show
-    #@applications = Application.find(params[:id]).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @applications = Application.where(params[:id])       
+    @applications = Application.where(params[:id]).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])       
   end
 
   def destroy

@@ -1,2 +1,8 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<%= form_tag password_resets_path, :method => :post, :class=>'form-signin' do %>
+  <h2 class="form-signin-heading"><%= @page_title %></h2>
+  <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+     <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
+  </div>
+  <%= submit_tag "Reset Password", class:'btn-reset'%>
+<% end %>

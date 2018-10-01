@@ -10,6 +10,7 @@ class Application < ApplicationRecord
          validates_presence_of :academic_year, :on => :create
          validates_presence_of :sponsor, :on => :create
          validates_presence_of :telephone, :on => :create
+         validates_presence_of :profile_picture, :on => :create
 
          def self.search(query)
                 where("reg_number like ?", "%#{query}%")

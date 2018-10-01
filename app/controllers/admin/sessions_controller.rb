@@ -6,8 +6,6 @@ class Admin::SessionsController < Admin::ApplicationController
   def create
     user = User.authenticate(params[:email], params[:password])
     if user
-      #session[:user_id] = user.id
-      #cookies.permanent[:auth_token] = user.auth_token
       if params[:remember_me]
         cookies.permanent[:auth_token] = user.auth_token
       else
@@ -21,7 +19,6 @@ class Admin::SessionsController < Admin::ApplicationController
   end
 
   def destroy
-    #session[:user_id] = nil
     cookies.delete(:auth_token)
     redirect_to admin_login_path, :notice => 'You have logged out!!'
   end

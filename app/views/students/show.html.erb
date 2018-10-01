@@ -1,10 +1,10 @@
-<h2 class="page-haeder">Welcome <%= current_user.reg_number%></h2>
+<h2 class="page-haeder">Welcome <%= current_student.reg_number%></h2>
 <div class="row">
     <div class="col-md-8">
         <ul class="nav">
             <li class="update">
                 Before you do anything you have to update your profile by providing your academic information
-                <%= link_to  "Update your profile", edit_student_path(current_user)%>
+                <%= link_to  "Update your profile", edit_student_path(current_student)%>
             </li>
             <li class="apply">
                 Before you do anything you have to update your profile by providing your academic information
@@ -16,8 +16,8 @@
             </li>              
         </ul>
     </div>
-    <% if current_user.profile_picture != nil %>
-    <div class="col-md-4"><%= image_tag current_user.profile_picture.url(:medium) %></div>
+    <% if current_student.profile_picture != nil %>
+    <div class="col-md-4"><%= image_tag current_student.profile_picture.url(:medium) %></div>
     <% else %>
     <div class="col-md-4"><%= image_tag  "student-default.png", width:'100%' %></div>
     <%end%>

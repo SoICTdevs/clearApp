@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   layout 'login', only: [:new, :create]
-  before_action :verify_logged_in, only: [:edit, :update, :show, :destory, :index]
+  before_action :verify_student_logged_in, only: [:edit, :update, :show, :destory, :index]
   def new
     @student = Student.new
   end
@@ -23,14 +23,13 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.update(student_params)
       flash[:notice] = 'You have updated successfully!'
-      redirect_to student_path(current_user)
+      redirect_to student_path(current_student)
     else
       render 'edit'
     end
   end
 
   def index
-    #@students = Student.all
     @students = Student.all
   end
 

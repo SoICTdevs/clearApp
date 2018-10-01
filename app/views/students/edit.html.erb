@@ -51,5 +51,5 @@
         <%= f.file_field :profile_picture, class:'form-control', placeholder:'Telephone number' %>
     </div>
     <%= f.submit "Submit", class:'btn btn-primary' %>
-    <%= link_to  "Cancel", student_path(current_user), class:'btn btn-default' %>
+    <%= link_to  "Cancel", student_path(current_student), class:'btn btn-default' %>
 <% end %>
