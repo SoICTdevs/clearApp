@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2018_10_01_190143) do
 
-  create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
     t.integer "reg_number"
     t.string "first_name"
     t.string "last_name"
@@ -25,12 +28,11 @@ ActiveRecord::Schema.define(version: 2018_10_01_190143) do
     t.string "sponsor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture"
-    t.integer "is_dean_approve", default: 2, null: false
-    t.integer "is_hod_approve", default: 2, null: false
-    t.integer "is_finance_approve", default: 2, null: false
-    t.integer "is_warden_approve", default: 2, null: false
-    t.integer "is_librarian_approve", default: 2, null: false
+    t.integer "is_dean_approve"
+    t.integer "is_hod_approve"
+    t.integer "is_finance_approve"
+    t.integer "is_warden_approve"
+    t.integer "is_librarian_approve"
     t.integer "student_id"
     t.string "dean_comment"
     t.string "hod_comment"
@@ -43,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_190143) do
     t.datetime "profile_picture_updated_at"
   end
 
-  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
     t.integer "reg_number"
     t.string "first_name"
     t.string "last_name"
@@ -67,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_190143) do
     t.datetime "password_reset_sent_at"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "role"
