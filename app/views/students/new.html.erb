@@ -27,8 +27,8 @@
         <%= f.password_field :password, class:'form-control', placeholder:'Password' %>
     </div>
     <div class="form-group">
-        <%= f.label :password_confirmation, class:'sr-only' %>
-        <%= f.password_field :confirm_password, class:'form-control', placeholder:'Repeat password' %>
+        <%= f.label :confirm_password, class:'sr-only' %>
+        <%= f.password_field :password, class:'form-control', placeholder:'Repeat password' %>
     </div>
     <%= f.submit "Submit", class:'btn btn-primary' %>
     <%= link_to  "Cancel", root_path, class:'btn btn-default' %>

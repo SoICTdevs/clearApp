@@ -7,32 +7,36 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <ul class="nav navbar-nav navbar-right">
-    <li class="logout">
-      <%= link_to  "Logout", logout_path %>
-    </li>
-  </ul>
-  
   <body>
     <div class="container">
         <div class="row">
-          <div class="col-md-4">
+        <div class ="col-md-3"></div>
+          <div class="col-md-6">
             <div class="urlogo">
-                <%= link_to image_tag("urlogo.JPG"), student_path(current_student) %>
+                <%= image_tag  "urlogo.JPG" %>
               </div>
          </div>
-          <div class="col-md-8">
-          <div class="content">
-             <% if flash[:notice]%>
-                <div class="alert alert-success"><%= flash[:notice]%></div>
-              <% end %>
-              <% if flash[:alert]%>
-                <div class="alert alert-danger"><%= flash[:alert] %></div>
-              <% end %>
-            <%= yield %>
-          </div>
-          </div>
+         <div class ="col-md-3">
+         </div>
+         </div>
+         <div class="logout">
+              <p class="pull-right"><strong><%= current_student.reg_number %> </strong>&nbsp; <%= link_to  " Logout", logout_path, class:'pull-right' %></p>
+            </div>
+         <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+            <div class="content">
+              <% if flash[:notice]%>
+                  <div class="alert alert-success"><%= flash[:notice]%></div>
+                <% end %>
+                <% if flash[:alert]%>
+                  <div class="alert alert-danger"><%= flash[:alert] %></div>
+                <% end %>
+                <%= yield %>
+              </div>
+            </div>
+            <div class ="col-md-3"></div>
         </div>
     </div>
     
