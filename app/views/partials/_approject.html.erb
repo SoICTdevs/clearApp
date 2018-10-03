@@ -13,19 +13,20 @@
         <div class="col-sm-3"><%= image_tag  "student-default.png", width:'100%' %></div>
       <%end%>
       <br/>
-      <div class="col-sm-6">
+      <div class="col-sm-6" id="sdetails">
         
         <li><strong>Registration number:</strong> <%= @application.reg_number%></li>
         <li><strong>Names:</strong> <%= @application.first_name %> <%= @application.last_name %></li>
         <li><strong>Eamil:</strong> <%= @application.email %></li>
         <li><strong>Telephone:</strong> <%= @application.telephone %></li>
+        <li><strong>School:</strong> <%= @application.school %></li>
         <li><strong>Department:</strong> <%= @application.department %></li>
         <li><strong>Academic Year:</strong> <%= @application.academic_year %></li>
         <li><strong>Sponsor:</strong> <%= @application.sponsor %></li>
         </div>
     </div>
      <% if current_user.role == 'Dean'%>
-
+        <br/>
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
                 <%= f.hidden_field :is_dean_approve, :value => 1 %>
@@ -43,7 +44,7 @@
         <% end %>
         </div>
     <% elsif current_user.role == 'HOD'%>
-
+         <br/>
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
                 <%= f.hidden_field :is_hod_approve, :value => 1 %>
@@ -61,7 +62,7 @@
         <% end %>
         </div>
     <% elsif current_user.role == 'Finance'%>
-
+        <br/>
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
                 <%= f.hidden_field :is_finance_approve, :value => 1 %>
@@ -79,7 +80,7 @@
         <% end %>
         </div>
     <% elsif current_user.role == 'Warden'%>
-
+        <br/>
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
                 <%= f.hidden_field :is_warden_approve, :value => 1 %>
@@ -97,7 +98,7 @@
         <% end %>
         </div>
     <% elsif current_user.role == 'Librarian'%>
-
+        <br/>
         <div class="form-group">
             <%= form_for [:admin, @application] do |f| %>
                 <%= f.hidden_field :is_librarian_approve, :value => 1 %>

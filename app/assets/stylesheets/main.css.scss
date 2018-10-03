@@ -81,9 +81,14 @@ form .form-group  form .approjectBtn{
 
 .btn{
     width: 80px;
+    height: 40px;
 }
 .btn-default{
-    background: $btn-board;
+    background: red;
+    color: $color-button;
+}
+.btn-default:hover{
+    background: $color-logout !important;
     color: $color-button;
 }
 .btn:hover{
@@ -109,6 +114,13 @@ form .form-group  form .approjectBtn{
     font-family: Geneva;
     margin-left: 35px;
     color: $btn-board;
+}
+
+#sdetails li{
+    text-decoration: none;
+    list-style: none;
+    padding-bottom: 5px;
+    font-family: Georgia;
 }
 
 

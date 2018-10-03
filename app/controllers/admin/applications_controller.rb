@@ -20,7 +20,24 @@ end
 
   def index
     if params[:search]
-    else 
+      @applications = Application.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    end
+    if current_user.role == 'Dean'
+      @page_title = 'New Applications'
+      @applications = Application.where("is_dean_approve = ? AND school= ?" , 2, current_user.school).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    elsif current_user.role == 'HOD'
+      @page_title = 'New Applications'
+      @applications = Application.where("is_hod_approve = ? AND department = ?",2, current_user.department).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    elsif current_user.role == 'Warden'
+      @page_title = 'New Applications'
+      @applications = Application.where('is_warden_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    elsif current_user.role == 'Finance'
+      @page_title = 'New Applications'
+      @applications = Application.where('is_finance_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    elsif current_user.role == 'Librarian'
+      @page_title = 'New Applications'
+      @applications= Application.where('is_librarian_approve = 2').order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    else
       @applications = Application.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     end
 
@@ -40,13 +57,13 @@ end
   def dashboard
     if current_user
       if current_user.role == 'Dean'
-        @apnew = Application.where('is_dean_approve = 2').count
-        @apapprov = Application.where('is_dean_approve = 1').count
-        @apreject = Application.where('is_dean_approve = 0').count
+        @apnew = Application.where("is_dean_approve = ? AND school= ?" , 2, current_user.school).count
+        @apapprov = Application.where("is_dean_approve = ? AND school= ?" , 1, current_user.school).count
+        @apreject = Application.where("is_dean_approve = ? AND school= ?" , 0, current_user.school).count
       elsif current_user.role == 'HOD'
-        @apnew = Application.where('is_hod_approve = 2').count
-        @apapprov = Application.where('is_hod_approve = 1').count
-        @apreject = Application.where('is_hod_approve = 0').count
+        @apnew = Application.where("is_hod_approve = ? AND department = ?",2, current_user.department).count
+        @apapprov = Application.where("is_hod_approve = ? AND department = ?",1, current_user.department).count
+        @apreject = Application.where("is_hod_approve = ? AND department = ?",0, current_user.department).count
       elsif current_user.role == 'Warden'
         @apnew = Application.where('is_warden_approve = 2').count
         @apapprov = Application.where('is_warden_approve = 1').count
@@ -70,13 +87,13 @@ end
     def show_applicants
       if current_user
         if current_user.role == 'Dean'
-          @new = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-          @reject = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-          @approve = Application.where("is_dean_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @new = Application.where("is_dean_approve = ? AND school = ?", params[:id], current_user.school).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_dean_approve = ? AND school = ?", params[:id], current_user.school).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_dean_approve = ? AND school = ?", params[:id], current_user.school).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
         elsif current_user.role == 'HOD'
-          @new = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-          @reject = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-          @approve = Application.where("is_hod_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @new = Application.where("is_hod_approve = ? AND department = ?", params[:id], current_user.department).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @reject = Application.where("is_hod_approve = ? AND department = ?", params[:id], current_user.department).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+          @approve = Application.where("is_hod_approve = ? AND department = ?", params[:id], current_user.department).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
         elsif current_user.role == 'Warden'
           @new = Application.where("is_warden_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
           @reject = Application.where("is_warden_approve = #{params[:id]}").order('created_at DESC').paginate(:per_page => 10, :page => params[:page])

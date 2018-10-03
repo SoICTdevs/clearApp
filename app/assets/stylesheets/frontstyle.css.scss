@@ -7,7 +7,7 @@ body{
     padding-right: 5%;
 }
 .urlogo{
-    padding: 10% 0 0 5%;
+    padding: 0 0 0 0;
 }
 .content{
     padding-top: 10%;
@@ -60,6 +60,7 @@ ul .logout a:hover{
 
 .btn{
     width: 90px;
+    height: 40px;
 }
 .btn-default{
     background: $btn-board;

@@ -8,20 +8,24 @@
     <%= stylesheet_link_tag    'login', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-   <ul class="nav navbar-nav navbar-right">
-    <li class="adminlogin">
-      <%= link_to  "Staff Login", admin_login_path, class:'staff-login' %>
-    </li>
-  </ul>
   <body>
     <div class="container">
         <div class="row">
+        <div class ="col-md-4"></div>
           <div class="col-md-4">
             <div class="urlogo">
                 <%= image_tag  "urlogo.JPG" %>
               </div>
          </div>
-          <div class="col-md-8">
+         <div class ="col-md-4"> 
+            <div class="adminlogin">
+              <%= link_to  "Staff Login", admin_login_path, class:'staff-login pull-right' %>
+            </div>
+          </div>
+          </div>
+         <div class="row">
+         <div class ="col-md-4"></div>
+          <div class="col-md-4">
           <div class="content">
              <% if flash[:notice]%>
                 <div class="alert alert-success"><%= flash[:notice]%></div>
@@ -32,6 +36,7 @@
             <%= yield %>
           </div>
           </div>
+          <div class ="col-md-4"></div>
         </div>
     </div>
     

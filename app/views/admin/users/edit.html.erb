@@ -1,2 +1,39 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<%= form_for [:admin, @user] do |f| %>
+<h2 class="form-signin-heading">User Registration Form</h2>
+    <% if @user.errors.any? %>
+        <% @user.errors.full_messages.each do |msg| %>
+           <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+        
+    <% end %>
+    <div class="form-group">
+        <%= f.label :name, class:'sr-only' %>
+        <%= f.text_field :name, class:'form-control', placeholder:'Name' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :email, class:'sr-only' %>
+        <%= f.text_field :email, class:'form-control', placeholder:'Email address' %>
+    </div>
+    <div class="form-group">
+       <%= f.label :role, class:'sr-only'%>
+       <%= f.text_field :role, placeholder:'User role or position', class:'form-control'%>
+   </div>
+   <div class="form-group">
+       <%= f.label :schole, class:'sr-only'%>
+       <%= f.text_field :school, placeholder:'School', class:'form-control'%>
+   </div>
+   <div class="form-group">
+       <%= f.label :department, class:'sr-only'%>
+       <%= f.text_field :department, placeholder:'Department', class:'form-control'%>
+   </div>
+    <div class="form-group">
+        <%= f.label :password, class:'sr-only' %>
+        <%= f.password_field :password, class:'form-control', placeholder:'Password' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :password_confirmation, class:'sr-only' %>
+        <%= f.password_field :password_confirmation, class:'form-control', placeholder:'Repeat password' %>
+    </div>
+    <%= f.submit "Submit", class:'btn btn-primary' %>
+    <%= link_to  "Cancel", admin_users_path, class:'btn btn-default' %>
+<% end %>

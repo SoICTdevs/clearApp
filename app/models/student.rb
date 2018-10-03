@@ -3,11 +3,14 @@ class Student < ApplicationRecord
     has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/student-default.jpg"
     validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
 
+    #has_secure_password
+
     attr_accessor :password
     before_save :encrypt_password, only: [:new, :create]
     before_create { generate_token(:auth_token) }
 
     validates_presence_of :password, :on => :create
+    validates_uniqueness_of :reg_number, :on => :create
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :email, presence: true
