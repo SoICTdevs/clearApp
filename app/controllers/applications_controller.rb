@@ -24,6 +24,6 @@ class ApplicationsController < ApplicationController
   end
   private 
   def application_params
-    params.require(:application).permit(:reg_number, :first_name, :student_id, :last_name, :profile_picture, :email, :level, :academic_year, :school, :sponsor, :sex, :department, :telephone)
+    params.require(:application).permit(:reg_number, :first_name, :student_id, :last_name, :profile_picture, :email, :level, :academic_year, :school_id, :sponsor, :sex, :department_id, :telephone)
   end
 end

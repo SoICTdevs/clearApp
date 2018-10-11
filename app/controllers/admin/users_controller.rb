@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :verify_logged_in
+  #before_action :verify_logged_in
   def new
     @user = User.new
   end
@@ -38,6 +38,6 @@ class Admin::UsersController < Admin::ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :role, :password,:school, :department, :auth_token)
+    params.require(:user).permit(:name, :email, :role, :password,:school_id, :department_id, :auth_token)
   end
 end

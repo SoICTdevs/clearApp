@@ -10,19 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_231944) do
+ActiveRecord::Schema.define(version: 2018_10_11_090134) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "applications", force: :cascade do |t|
+  create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "telephone"
     t.string "sex"
-    t.string "department"
     t.integer "level"
     t.string "academic_year"
     t.string "sponsor"
@@ -38,22 +34,37 @@ ActiveRecord::Schema.define(version: 2018_10_02_231944) do
     t.string "profile_picture_content_type"
     t.integer "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
-    t.string "school"
     t.integer "is_dean_approve", default: 2
     t.integer "is_hod_approve", default: 2
     t.integer "is_finance_approve", default: 2
     t.integer "is_warden_approve", default: 2
     t.integer "is_librarian_approve", default: 2
+    t.integer "school_id"
+    t.integer "department_id"
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "full_name"
+    t.integer "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "full_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "telephone"
     t.string "sex"
-    t.string "department"
     t.integer "level"
     t.string "academic_year"
     t.string "sponsor"
@@ -68,10 +79,11 @@ ActiveRecord::Schema.define(version: 2018_10_02_231944) do
     t.datetime "profile_picture_updated_at"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.string "school"
+    t.integer "school_id"
+    t.integer "department_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "role"
@@ -83,8 +95,8 @@ ActiveRecord::Schema.define(version: 2018_10_02_231944) do
     t.string "auth_token"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.string "department"
-    t.string "school"
+    t.integer "department_id"
+    t.integer "school_id"
   end
 
 end

@@ -1,5 +1,8 @@
 class Student < ApplicationRecord
 
+    belongs_to :department
+    has_one :application
+
     has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/student-default.jpg"
     validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
 
@@ -15,6 +18,8 @@ class Student < ApplicationRecord
     validates :last_name, presence: true
     validates :email, presence: true
     validates :reg_number, presence: true
+    validates :school_id, presence: true
+    validates :department_id, presence: true
     validates :password, confirmation: true
    
 

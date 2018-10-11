@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'departments/new'
+    get 'departments/create'
+    get 'departments/edit'
+    get 'departments/update'
+    get 'departments/index'
+    get 'departments/show'
+    get 'departments/destroy'
+  end
+  namespace :admin do
+    get 'schools/new'
+    get 'schools/create'
+    get 'schools/edit'
+    get 'schools/update'
+    get 'schools/index'
+    get 'schools/show'
+    get 'schools/destroy'
+  end
+  namespace :admin do
     get 'password_resets/new'
     get 'password_resets/create'
     get 'password_resets/edit'
@@ -45,7 +63,7 @@ Rails.application.routes.draw do
   get 'students/destroy'
 
   namespace :admin do
-    resources :users, :applications, :sessions, :password_resets
+    resources :users, :applications, :sessions, :password_resets, :schools, :departments
   end
 
   resources :applications, only: [:new, :create, :show, :index]

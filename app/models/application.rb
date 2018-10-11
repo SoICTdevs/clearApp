@@ -1,5 +1,5 @@
 class Application < ApplicationRecord
-        #belongs_to :student, class_name: "student", foreign_key: "student_id"
+        belongs_to :student
         has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/student-default.jpg"
         validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
 
@@ -7,6 +7,8 @@ class Application < ApplicationRecord
          validates_presence_of :reg_number, :on => :create
          validates_presence_of :sex, :on => :create
          validates_presence_of :level, :on => :create
+         validates_presence_of :school_id, :on => :create
+         validates_presence_of :department_id, :on => :create
          validates_presence_of :academic_year, :on => :create
          validates_presence_of :sponsor, :on => :create
          validates_presence_of :telephone, :on => :create
