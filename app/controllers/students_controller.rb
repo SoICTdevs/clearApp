@@ -41,10 +41,16 @@ class StudentsController < ApplicationController
   end
   private 
   def registration_params
-    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :password, :auth_token)
+    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :school_id, :department_id, :password, :password_confirmation, :auth_token)
   end
   private 
   def student_params
-    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :level, :school_id, :academic_year, :profile_picture, :confirm_password, :sponsor, :sex, :department_id, :telephone)
+    params.require(:student).permit(:reg_number, :first_name, :last_name, :email, :level, :school_id, :academic_year, :profile_picture, :sponsor, :sex, :department_id, :telephone)
+  end
+
+
+  public 
+  def catch_404
+    raise ActionController::RoutingError.new(params[:path])
   end
 end

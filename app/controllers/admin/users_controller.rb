@@ -38,6 +38,6 @@ class Admin::UsersController < Admin::ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :role, :password,:school_id, :department_id, :auth_token)
+    params.require(:user).permit(:name, :email, :role, :password,:password_confirmation, :school_id, :department_id, :auth_token)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_090134) do
+ActiveRecord::Schema.define(version: 2018_10_20_220412) do
 
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
@@ -70,8 +70,6 @@ ActiveRecord::Schema.define(version: 2018_10_11_090134) do
     t.string "sponsor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_hash"
-    t.string "password_salt"
     t.string "auth_token"
     t.string "profile_picture_file_name"
     t.string "profile_picture_content_type"
@@ -81,6 +79,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_090134) do
     t.datetime "password_reset_sent_at"
     t.integer "school_id"
     t.integer "department_id"
+    t.string "password_digest"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_090134) do
     t.datetime "password_reset_sent_at"
     t.integer "department_id"
     t.integer "school_id"
+    t.string "password_digest"
   end
 
 end

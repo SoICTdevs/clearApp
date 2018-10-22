@@ -25,6 +25,7 @@
     <thead>
       <tr>
         <th>Registration Number</th>
+        <th>School</th>
         <th>Departmentr</th>
         <th>Level</th>
         <th>Applied At</th>
@@ -35,7 +36,8 @@
       <tbody>
         <tr>
           <td><%= application.reg_number%></td>
-          <td><%= application.department%></td>
+          <td><%= application.school.name%></td>
+          <td><%= application.department.name%></td>
           <td><%= application.level%></td>
           <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
           <td><%= link_to  "View details", edit_admin_application_path(application) %></td>

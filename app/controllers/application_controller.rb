@@ -12,4 +12,17 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end 
       end
+
+     #to handle routing errors
+      rescue_from ActionController::RoutingError do |exception|
+        logger.error 'Routing error occurred'
+        render plain: '404 Not found', status: 404 
+       end
+
+      
+       rescue_from ActionView::MissingTemplate do |exception|
+        logger.error exception.message
+        render plain: '404 Not found', status: 404 
+
+      end
 end

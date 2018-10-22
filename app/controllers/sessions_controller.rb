@@ -4,14 +4,14 @@ class SessionsController <ApplicationController
   end
 
   def create
-    student = Student.authenticate(params[:email], params[:password])
-    if student
+    student = Student.find_by(email: params[:email])
+    if student && student.authenticate(params[:password])
       if params[:remember_me]
         cookies.permanent[:auth_token] = student.auth_token
       else
         cookies[:auth_token] = student.auth_token
       end
-      redirect_to student_path(current_student), :notice => 'You have successfully logged in!!!'
+      redirect_to student_path(current_student), notice: 'You have successfully logged in!!!'
     else
       flash.now.alert = 'Invalid email or password!!'
       render 'new'

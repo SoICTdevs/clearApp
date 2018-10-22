@@ -70,5 +70,9 @@ Rails.application.routes.draw do
   resources :students, only: [:edit, :update, :show, :new, :create, :index] 
   resources :sessions, :password_resets
   root 'students#index'
+
+  #handle routing error
+  match "*path", to: "students#catch_404", via: :all
+  match "*path", to: "students#catch_404", via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

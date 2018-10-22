@@ -22,7 +22,11 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-9">
              <div class="logout"> 
-              <p class="pull-right"><strong>Logged as: </strong> <%= current_user.role %> &nbsp; <%= link_to  " Logout", logout_path, class:'pull-right' %></p>
+             <% if current_user%>
+              <p class="pull-right"><strong>Logged in as: </strong> <%= current_user.role %><span class="role"></span> &nbsp; <%= link_to  " Logout", logout_path, class:'pull-right' %></p>
+              <% else%>
+              <p>Unauthorized access</p>
+              <% end %>
              </div>
         </div>
       </div>

@@ -26,4 +26,9 @@ class ApplicationsController < ApplicationController
   def application_params
     params.require(:application).permit(:reg_number, :first_name, :student_id, :last_name, :profile_picture, :email, :level, :academic_year, :school_id, :sponsor, :sex, :department_id, :telephone)
   end
+
+  public
+  def catch_404
+    raise ActionController::RoutingError.new(params[:path])
+  end
 end

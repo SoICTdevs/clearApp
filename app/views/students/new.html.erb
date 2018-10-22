@@ -23,13 +23,42 @@
         <%= f.text_field :email, class:'form-control', placeholder:'Email address' %>
     </div>
     <div class="form-group">
+        <%= f.label :school, class:'sr-only' %>
+        <%= f.collection_select :school_id, School.order(:name), :id, :name, {:include_blank =>'--hoose school--'}, class:'form-control', style:'padding: 0px;' %>
+    </div>
+    <div class="form-group" id="department">
+        <%= f.label :department, class:'sr-only' %>
+        <%= f.grouped_collection_select :department_id, School.order(:name), :departments, :name, :id, :name,{:include_blank =>'--choose department--'}, class:'form-control', style:'padding: 0px;'  %>
+    </div>
+    <div class="form-group">
         <%= f.label :password, class:'sr-only' %>
         <%= f.password_field :password, class:'form-control', placeholder:'Password' %>
     </div>
     <div class="form-group">
         <%= f.label :confirm_password, class:'sr-only' %>
-        <%= f.password_field :password, class:'form-control', placeholder:'Repeat password' %>
+        <%= f.password_field :password_confirmation, class:'form-control', placeholder:'Repeat password' %>
     </div>
     <%= f.submit "Submit", class:'btn btn-primary' %>
     <%= link_to  "Cancel", root_path, class:'btn btn-default' %>
 <% end %>
+
+
+<script>
+    jQuery(function(){
+    var departments;
+    $('#student_department_id').parent().hide();
+    departments = $('#student_department_id').html();
+    return $('#student_school_id').change(function(){
+        var school, options;
+        school = $('#student_school_id :selected').text();
+        options = $(departments).filter("optgroup[label=" + school + "]").html();
+        if(options){
+            $('#student_department_id').html(options);
+            return $('#student_department_id').parent().show();           
+        }else{
+            $('#student_department_id').empty();
+            return $('#student_department_id').parent().hide();
+        }
+    });
+});
+</script>

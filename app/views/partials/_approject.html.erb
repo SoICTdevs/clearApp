@@ -19,8 +19,8 @@
         <li><strong>Names:</strong> <%= @application.first_name %> <%= @application.last_name %></li>
         <li><strong>Eamil:</strong> <%= @application.email %></li>
         <li><strong>Telephone:</strong> <%= @application.telephone %></li>
-        <li><strong>School:</strong> <%= @application.school %></li>
-        <li><strong>Department:</strong> <%= @application.department %></li>
+        <li><strong>School:</strong> <%= @application.school.name %></li>
+        <li><strong>Department:</strong> <%= @application.department.name %></li>
         <li><strong>Academic Year:</strong> <%= @application.academic_year %></li>
         <li><strong>Sponsor:</strong> <%= @application.sponsor %></li>
         </div>

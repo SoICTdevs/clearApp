@@ -19,13 +19,13 @@
        <%= f.text_field :role, placeholder:'User role or position', class:'form-control'%>
    </div>
    <div class="form-group">
-       <%= f.label :school, class:'sr-only'%>
-       <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {:include_blank => '--select one--'}%>
-   </div>
-   <div class="form-group">
-       <%= f.label :department, class:'sr-only'%>
-       <%= f.select :department_id, Department.all.collect {|x| [x.name, x.id]}, {:include_blank => '--Select one--'}%>
-   </div>
+        <%= f.label :school, class:'sr-only' %>
+        <%= f.collection_select :school_id, School.order(:name), :id, :name, {:include_blank =>'--hoose school--'}, class:'form-control', style:'padding: 0px;' %>
+    </div>
+    <div class="form-group" id="department">
+        <%= f.label :department, class:'sr-only' %>
+        <%= f.grouped_collection_select :department_id, School.order(:name), :departments, :name, :id, :name,{:include_blank =>'--choose department--'}, class:'form-control', style:'padding: 0px;'  %>
+    </div>
     <div class="form-group">
         <%= f.label :password, class:'sr-only' %>
         <%= f.password_field :password, class:'form-control', placeholder:'Password' %>
