@@ -1,0 +1,19 @@
+<!--Main Dashboard -->
+<div class="dashboard">
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <% if current_user%>    
+        <% if current_user.role == 'Registrar'%>
+
+            <%= form_tag(admin_applications_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
+                <div class="form-group">
+                    <%= number_field_tag :search, params[:search], placeholder:"Search registration number", class:'form-control'%>
+                </div>
+                <%= submit_tag "Search", :name => nil, class:'btn btn-primary' %>
+            <% end %>
+        <% else%>
+            <%= render  "partials/mainContent" %>
+        <% end %>
+  <% end %>
+ </div>
+</div>

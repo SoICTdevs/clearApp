@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::ApplicationController
+class Admin::UsersController <ApplicationController
   #before_action :verify_logged_in
   def new
     @user = User.new
@@ -28,6 +28,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def index
+    @users = User.order(:name).page params[:page]
   end
 
   def show

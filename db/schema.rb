@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_220412) do
+ActiveRecord::Schema.define(version: 2018_11_02_111259) do
+
+  create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reg_number"
@@ -45,7 +71,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_220412) do
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "full_name"
     t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,7 +78,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_220412) do
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -86,17 +110,15 @@ ActiveRecord::Schema.define(version: 2018_10_20_220412) do
     t.string "name"
     t.string "email"
     t.string "role"
-    t.string "password_hash"
-    t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.string "auth_token"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string "password_digest"
     t.integer "department_id"
     t.integer "school_id"
-    t.string "password_digest"
   end
 
 end

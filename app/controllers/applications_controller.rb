@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  before_action :verify_student_logged_in, only: [:new]
   def new
     @application =Application.new
   end
@@ -14,7 +15,16 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @pplications = Application.where('student_id = current_student.id')
+    @application = Application.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CertificatePdf.new(@application)
+        send_data pdf.render, filename: "My_application.pdf",
+                             type: "application/pdf",
+                             disposition: "inline"
+      end
+    end
   end
   def index
     if current_student

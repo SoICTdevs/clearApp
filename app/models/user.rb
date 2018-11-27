@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     
+    belongs_to :department, optional: true
+    belongs_to :school, optional: true
     has_secure_password
     before_create { generate_token(:auth_token) }
 

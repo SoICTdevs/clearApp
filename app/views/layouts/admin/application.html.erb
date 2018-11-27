@@ -9,28 +9,44 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-      <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="urlogo">
-            <%= image_tag  "urlogo.JPG" %>
+    <div class="container">
+      <nav class="navbar navbar-default navbar-stick-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand urlogo" href="#">
+            <%= image_tag  "urlogo.JPG", width:'70%' %></a>
           </div>
-        </div>
-        <div class="col-sm-9"></div>
-      </div>
-      <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-9">
-             <div class="logout"> 
-             <% if current_user%>
-              <p class="pull-right"><strong>Logged in as: </strong> <%= current_user.role %><span class="role"></span> &nbsp; <%= link_to  " Logout", logout_path, class:'pull-right' %></p>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#">
+                  <% if current_user%>
+                     <span class="userRole">Welcome, <%= if current_user.role == "Warden" then "Student welfare" else current_user.role end %> </span>
+                  <% end %>
+                </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><% if current_user%>
+               &nbsp; <%= link_to  " Logout", admin_userlogout_path, class:'pull-right',id:'logout' %>
               <% else%>
               <p>Unauthorized access</p>
-              <% end %>
-             </div>
+              <% end %></li>
+              </ul>
+          </div><!--/.nav-collapse -->
         </div>
-      </div>
+      </nav>
+    </div>
+      
+      <!-- End of navigation -->
+      <div class="container">
+        <h1><span class="glyphicon glyphicon-cog"></span> User Dashboard<small> Manage student applications</small></h1>
         <div class="row">
+        
           <div class="col-sm-3">
             <%= render  "partials/dashboard" %>
           </div>
@@ -41,9 +57,7 @@
               <% if flash[:alert]%>
                 <div class="alert alert-danger"><%= flash[:alert] %></div>
               <% end %>
-               <h3 class="page-header">
-            <%= @page_title ? @page_title : 'Welcome to SoICT clearance application' %>
-          </h3>
+              <%= render  "partials/maindashboard" %>
             <%= yield %>
             
           </div>

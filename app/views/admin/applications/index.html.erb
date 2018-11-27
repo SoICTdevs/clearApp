@@ -1,22 +1,54 @@
 <%if current_user.role == 'Registrar'%>
   <% if params[:search] %>
-  <br/>
-  <br/>
-  <% if @application.exists? %>
-    <% if params[:controller] == 'admin/applications' %>
-      <div class="list-group">
-        <% @application.each do |application| %>
-        <%= link_to  application.reg_number, admin_application_path(application.id), class:'list-group-item' %>
-        <% end %>
-      </div>
+    <br/>
+    <br/>
+    <% if @application.exists? %>
+      <% if params[:controller] == 'admin/applications' %>
+        <div class="list-group">
+          <% @application.each do |application| %>
+          <%= link_to  application.reg_number, admin_application_path(application.id), class:'list-group-item' %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No student is not found check <strong class="page-header">Registration number</strong></p>
+      <p>or</p>
+      <p>Student is<strong class="page-header"> not yet Applied</strong> for clearence</p>
     <% end %>
-  <% else %>
-     <p>No student is not found check <strong class="page-header">Registration number</strong></p>
-     <p>or</p>
-     <p>Student is<strong class="page-header"> not yet Applied</strong> for clearence</p>
-     
-     <p>
   <% end %>
+  <% if @applications.exists? %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Registration Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>School</th>
+            <th>Departmentr</th>
+            <th>Level</th>
+            <th>Applied At</th>
+          </tr>
+        </thead>
+        <% @applications.each do |application|%>
+          <tbody>
+            <tr>
+              <td><%= application.reg_number%></td>
+              <td><%= application.first_name%></td>
+              <td><%= application.last_name%></td>
+              <td><%= application.school.name%></td>
+              <td><%= application.department.name%></td>
+              <td><%= application.level%></td>
+              <td><%= application.created_at.to_time.strftime('%B %e, %Y')%></td>
+            </tr>     
+          </tbody>
+        <% end%>
+      </table>
+      <p><%= link_to  "Print approved", admin_applications_path(format: "pdf") %></p>
+      <%= paginate @applications%>
+    </div>
+  <% else %>
+    <p>No applications currently avaible</p>
   <% end %>
 <% else %>  
 <% if @applications.exists? %>
@@ -39,13 +71,13 @@
           <td><%= application.school.name%></td>
           <td><%= application.department.name%></td>
           <td><%= application.level%></td>
-          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= application.created_at.to_time.strftime('%B %e, %Y')%></td>
           <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
         </tr>     
       </tbody>
     <% end%>
   </table>
-  <%= will_paginate @applications%>
+  <%= paginate @applications %>
 </div>
 <% else %>
 <p>No applications currently avaible</p>

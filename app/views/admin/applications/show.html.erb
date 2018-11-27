@@ -1,89 +1,108 @@
-<% if @new %>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Registration Number</th>
-        <th>School</th>
-        <th>Departmentr</th>
-        <th>Level</th>
-        <th>Applied At</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <% @new.each do |application|%>
-      <tbody>
-        <tr>
-          <td><%= application.reg_number%></td>
-          <td><%= application.school.name%></td>
-          <td><%= application.department.name%></td>
-          <td><%= application.level%></td>
-          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
-          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
-        </tr>     
-      </tbody>
-    <% end%>
-  </table>
-  <%= will_paginate @approve%>
+<div class="panel panel-default">
+    <% if @new %>
+    <div class="panel panel-heading">
+      <h3><%= @page_title %></h3>
+    </div>
+    <div class="panel panel-body">
+       <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Registration Number</th>
+            <th>School</th>
+            <th>Departmentr</th>
+            <th>Level</th>
+            <th>Applied At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <% @new.each do |application|%>
+          <tbody>
+            <tr>
+              <td><%= application.reg_number%></td>
+              <td><%= application.school.name%></td>
+              <td><%= application.department.name%></td>
+              <td><%= application.level%></td>
+              <td><%= application.created_at.to_time.strftime('%B %e, %Y')%></td>
+              <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+            </tr>     
+          </tbody>
+        <% end%>
+      </table>
+      <%= paginate @approve%>
+    </div>
+    </div>
+    <% elsif @approve %>
+    <div class="panel panel-heading">
+       <h3><%= @page_title %></h3>
+    </div>
+    <div class="panel panel-body">
+       <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Registration Number</th>
+            <th>School</th>
+            <th>Departmentr</th>
+            <th>Level</th>
+            <th>Applied At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <% @approve.each do |application|%>
+          <tbody>
+            <tr>
+              <td><%= application.reg_number%></td>
+              <td><%= application.school.name%></td>
+              <td><%= application.department.name%></td>
+              <td><%= application.level%></td>
+              <td><%= application.created_at.to_time.strftime('%B %e, %Y')%></td>
+              <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+            </tr>     
+          </tbody>
+        <% end%>
+      </table>
+      <%= paginate @new%>
+    </div>
+    </div>
+    <% elsif @reject %>
+    <div class="panel panel-heading">
+      <h3><%= @page_title %></h3>
+    </div>
+    <div class="panel panel-body">
+      <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Registration Number</th>
+            <th>School</th>
+            <th>Departmentr</th>
+            <th>Level</th>
+            <th>Applied At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <% @reject.each do |application|%>
+          <tbody>
+            <tr>
+              <td><%= application.reg_number%></td>
+              <td><%= application.school.name%></td>
+              <td><%= application.department.name%></td>
+              <td><%= application.level%></td>
+              <td><%= application.created_at.to_time.strftime('%B %e, %Y')%></td>
+              <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
+            </tr>     
+          </tbody>
+        <% end%>
+      </table>
+      <%= paginate @reject%>
+    </div>
+    </div>
+    
 </div>
-<% elsif @approve %>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Registration Number</th>
-        <th>School</th>
-        <th>Departmentr</th>
-        <th>Level</th>
-        <th>Applied At</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <% @approve.each do |application|%>
-      <tbody>
-        <tr>
-          <td><%= application.reg_number%></td>
-          <td><%= application.school.name%></td>
-          <td><%= application.department.name%></td>
-          <td><%= application.level%></td>
-          <td><%= application.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
-          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
-        </tr>     
-      </tbody>
-    <% end%>
-  </table>
-  <%= will_paginate @new%>
-</div>
-<% elsif @reject %>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Registration Number</th>
-        <th>School</th>
-        <th>Departmentr</th>
-        <th>Level</th>
-        <th>Applied At</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <% @reject.each do |application|%>
-      <tbody>
-        <tr>
-          <td><%= application.reg_number%></td>
-          <td><%= application.school.name%></td>
-          <td><%= application.department.name%></td>
-          <td><%= application.level%></td>
-          <td><%= application.created_at.to_time.strftime('%B %e  at %l:%M %p')%></td>
-          <td><%= link_to  "View details", edit_admin_application_path(application) %></td>
-        </tr>     
-      </tbody>
-    <% end%>
-  </table>
-  <%= will_paginate @reject%>
-</div>
+
 <% elsif current_user.role == 'Registrar'%>
-        <h3 class="page-header"><%= @application.reg_number %> | <%= @application.department %> | Level: <%= @application.level %> | <%= @application.academic_year %></h3>
+        <h3 class="page-header"><%= @application.reg_number %> | <%= @application.department.name %> | Level: <%= @application.level %> | <%= @application.academic_year %></h3>
 
         <table class="table table-striped">
         <tr>

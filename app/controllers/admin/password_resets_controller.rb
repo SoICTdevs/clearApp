@@ -7,7 +7,7 @@ class Admin::PasswordResetsController < Admin::ApplicationController
   def create
     user = User.find_by_email(params[:email])
     user.send_password_reset if user
-    redirect_to admin_login_path
+    redirect_to admin_userlogin_path
     flash[:notice] = 'Email sent with password reset instructions.'
   end
 
@@ -21,7 +21,7 @@ class Admin::PasswordResetsController < Admin::ApplicationController
     if @user.password_reset_sent_at < 2.hours.ago
       redirect_to new_admin_password_reset_path, :alert => 'Password reset link have been expired!'
     elsif @user.update(user_params)
-      redirect_to admin_login_path, :notice => 'Password have changed '
+      redirect_to admin_userlogin_path, :notice => 'Password have changed '
     else
       render 'edit', :alert => 'try again!'
     end

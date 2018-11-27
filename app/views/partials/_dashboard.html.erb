@@ -1,97 +1,12 @@
-<% if current_user%>
-  <% if current_user.role == 'Dean'%>
-    <ul class="nav nav-sidebar">
-        <br>
-        <br>
-        <li class="active">
-        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
-        </li>
-        <br>              
-    </ul>
-  <% elsif current_user.role == 'HOD'%>
-    <ul class="nav nav-sidebar">
-        <br>
-        <br>
-        <li class="active">
-        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
-        </li>
-        <br>              
-    </ul>
-  <% elsif current_user.role == 'Finance'%>
-   <ul class="nav nav-sidebar">
-        <br>
-        <br>
-        <li class="active">
-        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
-        </li>
-        <br>              
-    </ul>
-  <% elsif current_user.role == 'Warden'%>
-    <ul class="nav nav-sidebar">
-        <br>
-        <br>
-        <li class="active">
-        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
-        </li>
-        <br>              
-    </ul>
-    <% elsif current_user.role == 'Librarian'%>
-    <ul class="nav nav-sidebar">
-        <br>
-        <br>
-        <li class="active">
-        <%= link_to  "New application (#{@apnew})",admin_application_path(2) %>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Approved application (#{@apapprov})",admin_application_path(1)%>
-        </li>
-        <br>
-        <li>
-        <%= link_to  "Rejected application (#{@apreject})",admin_application_path(0) %>
-        </li>
-        <br>              
-    </ul>
-  <% elsif current_user.role == 'Registrar'%>
-  <br/>
-  <br/>
-   <%= form_tag(admin_applications_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
-        <div class="form-group">
-            <%= number_field_tag :search, params[:search], placeholder:"Search registration number", class:'form-control'%>
-        </div>
-        <%= submit_tag "Search", :name => nil, class:'btn btn-primary' %>
-      <% end %>
-    <% end %>
+<div class="dashboard">
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <% if current_user%>    
+        <% if current_user.role == 'Registrar'%>
+
+        <% else%>
+            <%= render  "partials/leftSideBar" %>
+        <% end %>
   <% end %>
+ </div>
+</div>

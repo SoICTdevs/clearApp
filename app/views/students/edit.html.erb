@@ -66,7 +66,8 @@
     return $('#student_school_id').change(function(){
         var school, options;
         school = $('#student_school_id :selected').text();
-        options = $(departments).filter("optgroup[label=" + school + "]").html();
+        escaped_school = school.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+        options = $(departments).filter("optgroup[label=" + escaped_school + "]").html();
         if(options){
             $('#student_department_id').html(options);
             return $('#student_department_id').parent().show();           

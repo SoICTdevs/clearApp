@@ -1,0 +1,17 @@
+<h2 class="page-header">Manage Users</h2>
+<table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Department</th>
+      <th>School</th>
+    </tr>
+    <% @users.each do |user| %>
+      <td><%= user.name%></td>
+      <td><%= user.email%></td>
+      <td><%= user.role%></td>
+      <td><%= user.department%></td>
+      <td><%= user.school%></td>
+    <% end %>
+</table>

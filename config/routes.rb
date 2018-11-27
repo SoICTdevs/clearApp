@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   namespace :admin do
     get 'departments/new'
     get 'departments/create'
@@ -41,9 +43,9 @@ Rails.application.routes.draw do
     get 'applications/destroy'
   end
   namespace :admin do
-    get 'login' => 'sessions#new', :as => 'login'
+    get 'userlogin' => 'sessions#new', :as => 'userlogin'
     get 'sessions/create'
-    get 'logout' => 'sessions#destroy', :as => 'logout'
+    get 'userlogout' => 'sessions#destroy', :as => 'userlogout'
   end
   namespace :admin do
     get 'users/new'

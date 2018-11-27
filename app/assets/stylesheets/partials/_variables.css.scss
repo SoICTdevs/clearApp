@@ -1,10 +1,31 @@
 $color-button : #fff;
 $color : #fff;
-$btn-board: #8dcff4;
+//$btn-board: #8dcff4;
+$btn-board: #161a83;
+
 $btn-active: #22679f;
 $color-title: #038eda;
 $color-apply: #46a6da;
 $color-view: #54839c;
 $color-logout: #ac7774;
 $color-btnhover: #01105d;
+$color-bodybg: rgb(8, 7, 46);
 $color-bg: #d2f4ff;
+
+//dash board
+$dashBg: #93A6BF;
+$dashColor: #F2F2F2;
+$dashBtn: #566D8C;
+$dashHover: #e5e9ee;
+$dashActive: #181E26;
+
+//second choice dashboard
+$headerbg: #333333;
+$headertxt: #ffffff;
+
+//new dashboard
+$bgDefault      : #4a87e8;
+$bgHighlight    : #296edd;
+$colDefault     : #ecf0f1;
+$colHighlight   : #ecdbff;
+$dropDown       : true;

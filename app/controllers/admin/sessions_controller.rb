@@ -1,5 +1,5 @@
 class Admin::SessionsController < Admin::ApplicationController
-  layout 'admin/login'
+  layout 'login'
   def new
   end
 
@@ -20,7 +20,7 @@ class Admin::SessionsController < Admin::ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    redirect_to admin_login_path, :notice => 'You have logged out!!'
+    redirect_to root_path, :notice => 'You have logged out!!'
   end
 end
 
