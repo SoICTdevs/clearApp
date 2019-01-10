@@ -8,7 +8,7 @@ class CertificatePdf < Prawn::Document
         move_down 5
         text 'COLLEGE OF SCIENCE AND TECHNOLOGY', size: 24
         move_down 5
-        text "Schoolbinary #{@application.school.name}", size: 24
+        text "School: #{@application.school.name}", size: 24
         text "Department: #{@application.department.name}", size: 24
         basics_info
         line_applications
@@ -16,9 +16,9 @@ class CertificatePdf < Prawn::Document
     end
     def basics_info
         move_down 10
-        text"Student name: #{@application.first_name}"
-        text"Student name: #{@application.first_name}"
-        text"Student name: #{@application.first_name}"
+        text"Student name: #{@application.first_name} #{@application.last_name}"
+        text"Level of Study: #{@application.level}"
+        text"Academic Year: #{@application.academic_year}"
 
     end
     def line_applications
@@ -27,9 +27,9 @@ class CertificatePdf < Prawn::Document
         table application_rows
     end
     def application_rows
-        [["Reg Number", "First Name", "Last Name", "Department", "School"]]+
+        [["Dean", "Head of department", "Student welfare", "Librarian", "Finance"]]+
         @applications.map do |applicant|
-            [applicant.reg_number, applicant.first_name, applicant.last_name, applicant.department.name, applicant.school.name]
+            [if applicant.is_dean_approve== 1 then 'Approve' else 'Reject' end, if applicant.is_hod_approve== 1 then 'Approve' else 'Reject' end, if applicant.is_warden_approve== 1 then 'Approve' else 'Reject' end, if applicant.is_librarian_approve== 1 then 'Approve' else 'Reject' end, if applicant.is_finance_approve== 1 then 'Approve' else 'Reject' end]
         end
     end
     
