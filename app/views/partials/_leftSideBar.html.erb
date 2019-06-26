@@ -1,12 +1,14 @@
 <div class="list-group custom-bg">
-    <a href="#" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog"></span> Applications</a>
+    <%= link_to  admin_applications_path, class:'list-group-item active main-color-bg' do %>
+      <span class="glyphicon glyphicon-cog" ></span> Applications
+    <% end %>
     <%= link_to  admin_application_path(2), class:'list-group-item' do %>
-       <span class="glyphicon glyphicon-list-alt"></span> New applications <span class="badge"><%= @apnew%></span>
+       <span class="glyphicon glyphicon-list-alt" style=" color: blue; "></span> New applications <span class="badge"><%= @apnew%></span>
     <% end %>
     <%= link_to  admin_application_path(1), class:'list-group-item' do %>
-      <span class="glyphicon glyphicon-ok"></span> Approved applications <span class="badge"><%= @apapprov %></span>
+      <span class="glyphicon glyphicon-ok" style=" color: green; "></span> Approved applications <span class="badge"><%= @apapprov %></span>
     <% end %>
     <%= link_to  admin_application_path(0), class:'list-group-item' do %>
-      <span class="glyphicon glyphicon-remove"></span> Rejected applications <span class="badge"><%= @apreject %></span>
+      <span class="glyphicon glyphicon-remove" style=" color: red; "></span> Rejected applications <span class="badge"><%= @apreject %></span>
     <% end %>
 </div>

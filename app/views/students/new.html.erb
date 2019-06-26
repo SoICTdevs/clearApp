@@ -1,5 +1,5 @@
 <%= form_for  @student do |f| %>
-<h2 class="form-signin-heading">Student Registration Form</h2>
+<h2 class="form-signin-heading">Student Registration</h2>
     <% if @student.errors.any? %>
         <% @student.errors.full_messages.each do |msg| %>
            <div class="alert alert-danger"><%= msg %></div>

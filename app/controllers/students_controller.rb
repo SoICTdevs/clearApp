@@ -34,7 +34,8 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @students = Student.find(params[:id])
+    @applications = Application.where("student_id = #{current_student.id}")
+    @student = Student.find(params[:id])
   end
 
   def destroy

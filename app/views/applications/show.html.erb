@@ -1,0 +1,46 @@
+
+<% if @applications.exists? %>
+<h2 class="page-header">Application Progress summary</h2>
+<table class="table table-striped table-bordered" style=" background: whitesmoke;">
+<tr style="font-size: 18px;">
+  <th>School Administrator</th>
+  <th>Feedback</th>
+  <th>Comments</th>
+</tr>
+<% @applications.each do |data| %>
+<tr>
+  <td>Dean of School</td>
+  <td><%= if data.is_dean_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_dean_approve == 0 then data.dean_comment elsif data.is_dean_approve == 2 then 'Pending...' else 'No comment' end %></td>
+</tr>
+
+<tr>
+  <td>Head of Department</td>
+  <td><%= if data.is_hod_approve == 1 then 'approved' elsif data.is_hod_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_hod_approve == 0 then data.hod_comment elsif data.is_hod_approve == 2 then 'pending...'  else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Finance</td>
+  <td><%= if data.is_finance_approve == 1 then 'approved' elsif data.is_finance_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_finance_approve == 0 then data.finance_comment elsif data.is_finance_approve == 2 then 'Pending...' else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Librarian</td>
+  <td><%= if data.is_librarian_approve == 1 then 'approved' elsif data.is_dean_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_librarian_approve == 0 then data.librarian_comment elsif data.is_librarian_approve == 2 then 'pending...' else 'No comment' end %></td>
+</tr>
+<tr>
+  <td>Student Welfare</td>
+  <td><%= if data.is_warden_approve == 1 then 'approved' elsif data.is_warden_approve == 0 then 'Rejected' else 'Pending...' end %></td>
+  <td><%= if data.is_warden_approve == 0 then data.warden_comment elsif data.is_warden_approve == 2 then 'Pending...' else 'No comment' end %></td>
+</tr>   
+</table>
+  <% if data.is_dean_approve == 1 and data.is_warden_approve == 1 and data.is_hod_approve == 1 and data.is_finance_approve == 1 and data.is_librarian_approve == 1%>
+    <%= link_to  "View PDF", application_path(format: 'pdf'), class:'btn-lg btn-success' %>
+  <% end %>
+<% end %>
+
+<%else %>
+<p><strong>You have not applied to your clearance certificate</strong> <%= link_to  "Apply now", new_application_path, class:'btn btn-primary' %></p>
+<%end%>
+<%= link_to  "Go to home", student_path(current_student) %>

@@ -1,18 +1,78 @@
-<%= form_tag sessions_path, :class=>'form-signin' do %>
-  <h2 class="form-signin-heading">Student Login</h2>
-  <div class="form-group">
-      <label for="inputEmail" class="sr-only">Email address</label>
-     <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
-  </div>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <%= password_field_tag :password, params[:password],  class:'form-control', id:'inputPasswordl', placeholder:'password' %>
-  <div class="form-group">
-    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-     <%= label_tag :remember_me %>
-    <label for="forgetpassword">
-      <%= link_to  "I forgot my password", new_password_reset_path, class:'reset_password' %>
-    </label>
-  </div>
-  <%= submit_tag "Signin", class:'btn btn-lg btn-primary'%>
-  <%= link_to  "Register", new_student_path, class:'btn btn-lg btn-default' %>
-<% end %>
+<!-- User login Modal -->
+          <div class="modal" id="modalUserLogin" z-index="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span  data-dismiss="modal" class="close"> &times;</span>
+                </div>
+                <div class="modal-body">
+                <%= form_tag admin_sessions_path, :class=>'form-signin' do %>
+                  <h2 class="form-signin-heading text-center"><i class="glyphicon glyphicon-user"></i> User Login</h2>
+                  <div class="form-group">
+                      <label for="inputEmail" class="sr-only"> Email address</label>
+                    <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
+                  </div>
+                  <label for="inputPassword" class="sr-only">Password</label>
+                  <%= password_field_tag :password, params[:password],  class:'form-control', id:'inputPasswordl', placeholder:'password' %>
+                  <div class="form-group">
+                    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                    <%= label_tag :remember_me %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="forgetpassword">
+                      <%= link_to  "I forgot my password", new_admin_password_reset_path, class:'reset_password' %>
+                    </label>
+                  </div>
+                  <%= submit_tag "Signin", class:'btn btn-lg btn-primary'%>
+                  <%= link_to  "Cancel", login_path, class:'btn btn-lg btn-info' %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of user login modal -->
+
+          <!-- Student login Modal -->
+          <div class="modal" id="modalStudentLogin" z-index="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span  data-dismiss="modal" class="close"> &times;</span>
+                </div>
+                <div class="modal-body">
+                   <%= form_tag sessions_path, :class=>'form-signin' do %>
+                      <h2 class="form-signin-heading">Student Login</h2>
+                      <div class="form-group">
+                          <label for="inputEmail" class="sr-only">Email address</label>
+                        <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
+                      </div>
+                      <label for="inputPassword" class="sr-only">Password</label>
+                      <%= password_field_tag :password, params[:password],  class:'form-control', id:'inputPasswordl', placeholder:'password' %>
+                      <div class="form-group">
+                        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                        <%= label_tag :remember_me %>
+                        <label for="forgetpassword">
+                          <%= link_to  "I forgot my password", new_password_reset_path, class:'reset_password' %>
+                        </label>
+                      </div>
+                      <%= submit_tag "Signin", class:'btn btn-lg btn-primary'%>
+                      <%= link_to  "Register", new_student_path, class:'btn btn-lg btn-default' %>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-info">
+                
+                <div class="panel panel-body">
+                <h2>Welcome to online clearance MIS</h2><br>
+                  <p><h4>Clearance certificate application made simply.</h4></p>
+                </div>
+                <div class="panel panel-footer">
+                  <a class="btn btn-info">
+                    <span data-target="#modalStudentLogin" data-toggle="modal">Login</span>
+                  </a><!-- login button -->
+
+                  <%= link_to  "Register", students_new_path, class:'btn btn-primary' %>
+                  <!-- register button -->
+                </div>
+              </div> <!--End of welcome panel -->

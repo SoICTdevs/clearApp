@@ -1,7 +1,7 @@
 @import "partials/variables";
 body{
     //padding-top: 50px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:  verdana, Arial, sans-serif, Courier;
 }
 //urlogo background
 .urlogo{
@@ -23,8 +23,11 @@ body{
 .navbar-default {
     background-color: $bgDefault;
     border-color: $bgHighlight;
+    height: 60px;
     .navbar-brand {
       color: $colDefault;
+      height: 60px;
+      background-color: white !important;
       &:hover, &:focus {
         color: $colHighlight; }}
     .navbar-text {

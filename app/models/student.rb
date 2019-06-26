@@ -11,9 +11,10 @@ class Student < ApplicationRecord
     before_create { generate_token(:auth_token) }
 
     validates_uniqueness_of :reg_number
+    validates_uniqueness_of :email
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true
+    #validates :email, presence: true
     validates :reg_number, presence: true
     validates :school_id, presence: true
     validates :department_id, presence: true

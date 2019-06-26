@@ -1,7 +1,8 @@
 @import "partials/variables";
 body{
+    padding-top: 50px;
     background: $color-bg;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: verdana, Arial, sans-serif, Courier;
 }
 .row ul{
     padding-right: 5%;
@@ -15,6 +16,8 @@ body{
 .btn{
     border: 0ch;
     border-radius: 0;
+    margin-right:10px;
+    padding: 10px;
 }
 .form-control{
     padding: 2%;
@@ -57,18 +60,13 @@ ul .logout a:hover{
     font-size: 16px;
     background: $color-logout !important;
 }
-
-.btn{
-    width: 90px;
-    height: 40px;
-}
 .btn-default{
     background: $btn-board;
     color: $color-button;
 }
 .btn:hover{
     background: $color-btnhover;
-    color: $btn-board
+    color: $color-button;
 }
 h2{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -82,6 +80,7 @@ ul .staff-login{
     font-size: 14px;
     font-family: Tohoma;
     color: $color-title;
+    padding-top: 50px;
 }
 ul .staff-login:hover{
     background: none !important;

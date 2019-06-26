@@ -15,6 +15,7 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    @applications = Application.where("student_id = #{current_student.id}")
     @application = Application.find(params[:id])
     respond_to do |format|
       format.html
@@ -29,6 +30,14 @@ class ApplicationsController < ApplicationController
   def index
     if current_student
       @applications = Application.where("student_id = #{current_student.id}")
+      
+    end
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = Prawn::Document.new
+        pdf.text "Hello"
+      end
     end
    
   end

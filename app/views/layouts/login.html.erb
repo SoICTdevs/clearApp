@@ -9,87 +9,49 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to  root_path do %>
+            <div class="urlogo">
+                <%= image_tag  "urlogo.png", width:'40%' %>
+              </div>
+          <% end %>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <div class="adminlogin">
+              <a class="staff-login pull-right">
+                <span data-target="#modalUserLogin" data-toggle="modal">Staff Portal</span>
+              </a>
+              
+            </div>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
     <div class="container">
         <div class="row">
         <div class ="col-md-4"></div>
           <div class="col-md-4">
-            <div class="urlogo">
-                <%= image_tag  "urlogo.JPG" %>
-              </div>
+            
          </div>
          <div class ="col-md-4"> 
             <div class="adminlogin">
               <a class="staff-login pull-right">
-                <span data-target="#modalUserLogin" data-toggle="modal">Staff Partal</span>
+                <span data-target="#modalUserLogin" data-toggle="modal">Staff Portal</span>
               </a>
-              <a class="staff-login">
-                <span data-target="#modalStudentLogin" data-toggle="modal">Student Partal</span>
-              </a>
+              
             </div>
           </div>
           </div>
-          <!-- User login Modal -->
-          <div class="modal" id="modalUserLogin" z-index="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span  data-dismiss="modal" class="close"> &times;</span>
-                </div>
-                <div class="modal-body">
-                <%= form_tag admin_sessions_path, :class=>'form-signin' do %>
-                  <h2 class="form-signin-heading"><i class="glyphicon glyphicon-user">User</i> Login</h2>
-                  <div class="form-group">
-                      <label for="inputEmail" class="sr-only"> Email address</label>
-                    <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
-                  </div>
-                  <label for="inputPassword" class="sr-only">Password</label>
-                  <%= password_field_tag :password, params[:password],  class:'form-control', id:'inputPasswordl', placeholder:'password' %>
-                  <div class="form-group">
-                    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-                    <%= label_tag :remember_me %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label for="forgetpassword">
-                      <%= link_to  "I forgot my password", new_admin_password_reset_path, class:'reset_password' %>
-                    </label>
-                  </div>
-                  <%= submit_tag "Signin", class:'btn btn-lg btn-primary'%>
-                  <%= link_to  "Cancel", login_path, class:'btn btn-lg btn-info' %>
-                <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End of user login modal -->
-
-          <!-- Student login Modal -->
-          <div class="modal" id="modalStudentLogin" z-index="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span  data-dismiss="modal" class="close"> &times;</span>
-                </div>
-                <div class="modal-body">
-                   <%= form_tag sessions_path, :class=>'form-signin' do %>
-                      <h2 class="form-signin-heading">Student Login</h2>
-                      <div class="form-group">
-                          <label for="inputEmail" class="sr-only">Email address</label>
-                        <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
-                      </div>
-                      <label for="inputPassword" class="sr-only">Password</label>
-                      <%= password_field_tag :password, params[:password],  class:'form-control', id:'inputPasswordl', placeholder:'password' %>
-                      <div class="form-group">
-                        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-                        <%= label_tag :remember_me %>
-                        <label for="forgetpassword">
-                          <%= link_to  "I forgot my password", new_password_reset_path, class:'reset_password' %>
-                        </label>
-                      </div>
-                      <%= submit_tag "Signin", class:'btn btn-lg btn-primary'%>
-                      <%= link_to  "Register", new_student_path, class:'btn btn-lg btn-default' %>
-                    <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
           <!-- Student register Modal -->
           <div class="modal" id="modalStudentRegister" z-index="-1">
@@ -100,7 +62,7 @@
                 </div>
                 <div class="modal-body">
                    <%= form_tag new_student_path, :class=>'form-signin' do %>
-                      <h2 class="form-signin-heading">Student Login</h2>
+                      <h2 class="form-signin-heading">Student Registration Form</h2>
                       <div class="form-group">
                           <label for="inputName" class="sr-only">Registration Number</label>
                           <%= text_field_tag :reg_number, params[:reg_number], class:'form-control', placeholder:'Registration Number' %>
@@ -143,23 +105,7 @@
               <% if flash[:alert] %>
                 <div class="alert alert-danger"><%= flash[:alert] %></div>
               <% end %>
-              <div class="panel panel-info">
-                <div class="panel panel-heading">
-                  <h2>Welcome to clearance application system</h2>
-                </div>
-                <div class="panel panel-body">
-                  <p><h4>This is going to help you to get cleared by just one click.
-                  If you are new you will need to first register and proceed this your application.</h4></p>
-                </div>
-                <div class="panel panel-footer">
-                  <a class="btn btn-info">
-                    <span data-target="#modalStudentLogin" data-toggle="modal">Login</span>
-                  </a><!-- login button -->
-                  <a class="btn btn-info">
-                    <span data-target="#modalStudentRegister" data-toggle="modal">Register</span>
-                  </a><!-- register button -->
-                </div>
-              </div> <!--End of welcome panel -->
+              
             <%= yield %>
           </div>
           </div>

@@ -1,6 +1,6 @@
 <%= form_for  @application do |f| %>
 <% if current_student %>
-<h2 class="form-signin-heading"> Clearance Apllication Form</h2>
+<h2 class="form-signin-heading">Apply for Clearance Certificate</h2>
     <% if @application.errors.any? %>
         <% @application.errors.full_messages.each do |msg| %>
            <div class="alert alert-danger"><%= msg %></div>
@@ -56,7 +56,7 @@
     <%= f.number_field :student_id, class:'hidden', placeholder:'Telephone number', value:"#{current_student.id}"  %>
 </div>
 <div class="form-group">
-    <%= f.label :profile_picture, class:'sr-only' %>
+    <%= f.label :upload_picture %>
     <%= f.file_field :profile_picture, class:'form-control', placeholder:'Telephone number' %>
 </div>
 <%= f.submit "Submit", class:'btn btn-primary' %>
