@@ -41,6 +41,7 @@ gem 'prawn-rails', '~> 1.2'
 gem 'activeadmin'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-kaminari-views'
+gem 'validates_phone_number', '~> 2.0', '>= 2.0.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

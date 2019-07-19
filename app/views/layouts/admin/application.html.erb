@@ -46,20 +46,40 @@
       <div class="container">
         <h1><span class="glyphicon glyphicon-cog"></span> User Dashboard<small> Manage student applications</small></h1>
         <div class="row">
-        
-          <div class="col-sm-3">
+          <%if current_user.role == 'Registrar'%>
+               <div class="search-form">
+                  <%= form_tag(admin_applications_path, :method => "get", id:"search-form", class:'form-inline pull-right') do %>
+                    <div class="form-group">
+                        <%= number_field_tag :search, params[:search], placeholder:"Search registration number", class:'form-control'%>
+                    </div>
+                    <%= submit_tag "Search", :name => nil, class:'btn btn-primary' %>
+                  <% end %>
+                </div>
+            <div class="col-md-1"> </div>
+            <div class="col-md-10">
+              <% if flash[:notice]%>
+                  <div class="alert alert-success"><%= flash[:notice]%></div>
+                <% end %>
+                <% if flash[:alert]%>
+                  <div class="alert alert-danger"><%= flash[:alert] %></div>
+                <% end %>
+                
+              <%= yield %>            
+            </div>
+          <% else %>
+          <div class="col-md-3">
             <%= render  "partials/dashboard" %>
           </div>
-          <div class="col-sm-9">
+          <div class="col-md-9">
              <% if flash[:notice]%>
                 <div class="alert alert-success"><%= flash[:notice]%></div>
               <% end %>
               <% if flash[:alert]%>
                 <div class="alert alert-danger"><%= flash[:alert] %></div>
               <% end %>
-            <%= yield %>
-            
+            <%= yield %>            
           </div>
+          <% end %>
         </div>
     </div>
     

@@ -10,6 +10,7 @@ class Student < ApplicationRecord
     #has_secure_password before_save :encrypt_password, only: [:new, :create]
     before_create { generate_token(:auth_token) }
 
+    validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i
     validates_uniqueness_of :reg_number
     validates_uniqueness_of :email
     validates :first_name, presence: true

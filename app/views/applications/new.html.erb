@@ -57,7 +57,7 @@
 </div>
 <div class="form-group">
     <%= f.label :upload_picture %>
-    <%= f.file_field :profile_picture, class:'form-control', placeholder:'Telephone number' %>
+    <%= f.file_field :profile_picture, class:'form-control', placeholder:'Profile picture', value:"#{current_student.profile_picture}" %>
 </div>
 <%= f.submit "Submit", class:'btn btn-primary' %>
 <%= link_to  "Cancel", student_path(current_student), class:'btn btn-default' %>

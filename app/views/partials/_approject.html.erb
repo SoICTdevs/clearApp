@@ -38,10 +38,10 @@
          <%= form_for [:admin, @application] do |f| %>
             <div class="form-group">
                 <%= f.label :comments_section, class:'sr-only'%>
-                <%= f.text_area :dean_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+                <%= f.text_area :dean_comment, class:'form-control', placeholder:"#{if @application.dean_comment.presence then @application.dean_comment else 'Comment what this application miss' end}" %>
             </div>
             <%= f.hidden_field :is_dean_approve, :value => 0 %>
-            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+            <%= f.submit "Reject", class: "btn btn-large btn-danger" %>
         <% end %>
         </div>
     <% elsif current_user.role == 'HOD'%>
@@ -56,10 +56,10 @@
          <%= form_for [:admin, @application] do |f| %>
             <div class="form-group">
                 <%= f.label :comments_section, class:'sr-only'%>
-                <%= f.text_area :hod_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+                <%= f.text_area :hod_comment, class:'form-control', placeholder:"#{if @application.hod_comment.presence then @application.hod_comment else 'Comment what this application miss' end}"%>
             </div>
             <%= f.hidden_field :is_hod_approve, :value => 0 %>
-            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+            <%= f.submit "Reject", class: "btn btn-large btn-danger" %>
         <% end %>
         </div>
     <% elsif current_user.role == 'Finance'%>
@@ -74,10 +74,10 @@
          <%= form_for [:admin, @application] do |f| %>
             <div class="form-group">
                 <%= f.label :comments_section, class:'sr-only'%>
-                <%= f.text_area :finance_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+                <%= f.text_area :finance_comment, class:'form-control', placeholder:"#{if @application.finance_comment.presence then @application.finance_comment else 'Comment what this application miss' end}"%>
             </div>
             <%= f.hidden_field :is_finance_approve, :value => 0 %>
-            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+            <%= f.submit "Reject", class: "btn btn-large btn-danger" %>
         <% end %>
         </div>
     <% elsif current_user.role == 'Warden'%>
@@ -92,10 +92,10 @@
          <%= form_for [:admin, @application] do |f| %>
             <div class="form-group">
                 <%= f.label :comments_section, class:'sr-only'%>
-                <%= f.text_area :warden_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+                <%= f.text_area :warden_comment, class:'form-control', placeholder:"#{if @application.warden_comment.presence then @application.warden_comment else 'Comment what this application miss' end}"%>
             </div>
             <%= f.hidden_field :is_warden_approve, :value => 0 %>
-            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+            <%= f.submit "Reject", class: "btn btn-large btn-danger" %>
         <% end %>
         </div>
     <% elsif current_user.role == 'Librarian'%>
@@ -110,15 +110,13 @@
          <%= form_for [:admin, @application] do |f| %>
             <div class="form-group">
                 <%= f.label :comments_section, class:'sr-only'%>
-                <%= f.text_area :librarian_comment, class:'form-control', placeholder:'Give him or her a feedback if you reject this application'%>
+                <%= f.text_area :librarian_comment, class:'form-control', placeholder:"#{if @application.librarian_comment.presence then @application.librarian_comment else 'Comment what this application miss' end}" %>
             </div>
             <%= f.hidden_field :is_librarian_approve, :value => 0 %>
-            <%= f.submit "Reject", class: "btn btn-large btn-default" %>
+            <%= f.submit "Reject", class: "btn btn-large btn-danger" %>
         <% end %>
         </div>
      <% else %>
      <p>User not found, Try again!!!</p>
      <% end %>
-<% else %>
-  <p>Unauthorized Access</p>
 <% end %>

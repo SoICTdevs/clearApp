@@ -7,7 +7,7 @@
                 </div>
                 <div class="modal-body">
                 <%= form_tag admin_sessions_path, :class=>'form-signin' do %>
-                  <h2 class="form-signin-heading text-center"><i class="glyphicon glyphicon-user"></i> User Login</h2>
+                  <h2 class="form-signin-heading text-center"> Admin Login</h2>
                   <div class="form-group">
                       <label for="inputEmail" class="sr-only"> Email address</label>
                     <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 
@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-body">
                    <%= form_tag sessions_path, :class=>'form-signin' do %>
-                      <h2 class="form-signin-heading">Student Login</h2>
+                      <h2 class="form-signin-heading text-center">Student Login</h2>
                       <div class="form-group">
                           <label for="inputEmail" class="sr-only">Email address</label>
                         <%= text_field_tag :email, params[:email], class:'form-control', id:'inputEmail', placeholder:'Email address' %> 

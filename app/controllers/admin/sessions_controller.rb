@@ -13,8 +13,7 @@ class Admin::SessionsController < Admin::ApplicationController
       end
       redirect_to admin_applications_path, :notice => 'You have successfully logged in!!!'
     else
-      flash.now.alert = 'Invalid email or password!!'
-      render 'new'
+      redirect_to root_path, :alert => 'Invalid email or password!!'
     end
   end
 
